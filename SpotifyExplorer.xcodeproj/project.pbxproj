@@ -7,16 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7706DFD2E38FE3D00D0E04C /* SearchArtistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7706DFC2E38FE3D00D0E04C /* SearchArtistView.swift */; };
+		B7706DFF2E3902CA00D0E04C /* FavoriteArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7706DFE2E3902CA00D0E04C /* FavoriteArtists.swift */; };
+		B7706E012E39035100D0E04C /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7706E002E39035100D0E04C /* TabBarView.swift */; };
 		B792F2D32E37A5FD007F0572 /* SpotifyExplorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792F2D22E37A5FD007F0572 /* SpotifyExplorerApp.swift */; };
-		B792F2D52E37A5FD007F0572 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792F2D42E37A5FD007F0572 /* ContentView.swift */; };
+		B792F2D52E37A5FD007F0572 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792F2D42E37A5FD007F0572 /* HomeScreenView.swift */; };
 		B792F2D72E37A601007F0572 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B792F2D62E37A601007F0572 /* Assets.xcassets */; };
 		B792F2DA2E37A601007F0572 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B792F2D92E37A601007F0572 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B7706DFC2E38FE3D00D0E04C /* SearchArtistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArtistView.swift; sourceTree = "<group>"; };
+		B7706DFE2E3902CA00D0E04C /* FavoriteArtists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteArtists.swift; sourceTree = "<group>"; };
+		B7706E002E39035100D0E04C /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		B792F2CF2E37A5FD007F0572 /* SpotifyExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B792F2D22E37A5FD007F0572 /* SpotifyExplorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyExplorerApp.swift; sourceTree = "<group>"; };
-		B792F2D42E37A5FD007F0572 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B792F2D42E37A5FD007F0572 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		B792F2D62E37A601007F0572 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B792F2D92E37A601007F0572 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,8 +57,8 @@
 		B792F2D12E37A5FD007F0572 /* SpotifyExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				B792F2E02E37B572007F0572 /* Views */,
 				B792F2D22E37A5FD007F0572 /* SpotifyExplorerApp.swift */,
-				B792F2D42E37A5FD007F0572 /* ContentView.swift */,
 				B792F2D62E37A601007F0572 /* Assets.xcassets */,
 				B792F2D82E37A601007F0572 /* Preview Content */,
 			);
@@ -65,6 +71,17 @@
 				B792F2D92E37A601007F0572 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B792F2E02E37B572007F0572 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B792F2D42E37A5FD007F0572 /* HomeScreenView.swift */,
+				B7706DFC2E38FE3D00D0E04C /* SearchArtistView.swift */,
+				B7706DFE2E3902CA00D0E04C /* FavoriteArtists.swift */,
+				B7706E002E39035100D0E04C /* TabBarView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +154,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B792F2D52E37A5FD007F0572 /* ContentView.swift in Sources */,
+				B792F2D52E37A5FD007F0572 /* HomeScreenView.swift in Sources */,
+				B7706DFD2E38FE3D00D0E04C /* SearchArtistView.swift in Sources */,
+				B7706DFF2E3902CA00D0E04C /* FavoriteArtists.swift in Sources */,
+				B7706E012E39035100D0E04C /* TabBarView.swift in Sources */,
 				B792F2D32E37A5FD007F0572 /* SpotifyExplorerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
