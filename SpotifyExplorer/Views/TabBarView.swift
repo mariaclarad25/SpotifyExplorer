@@ -8,29 +8,28 @@
 import SwiftUI
 
 struct TabBarView: View {
-    init() {
-        UITabBar.appearance().backgroundColor = UIColor(named: "grayishPurple")
-        UITabBar.appearance().unselectedItemTintColor = UIColor(named: "grayMedium")
-    }
+        init() {
+            configureTabBarAppearance()
+        }
     
     var body: some View {
-        TabView {
-            SearchArtistView()
-                .tabItem {
-                    Image(systemName: "music.mic")
-                    Text("Artistas")
+            TabView {
+                SearchArtistView()
+                    .tabItem {
+                        Image(systemName: "music.mic")
+                        Text("Artistas")
+                    }
+                
+                FavoriteArtists()
+                    .tabItem {
+                        Image(systemName: "heart")
+                        Text("Favoritos")
+                    }
             }
-            
-            FavoriteArtists()
-                .tabItem {
-                    Image(systemName: "heart")
-                    Text("Favoritos")
-            }
+            .tint(Color(.lightPurple))
+            .navigationBarBackButtonHidden(true)
         }
-        .tint(Color(.lightPurple))
-        .navigationBarBackButtonHidden(true)
     }
-}
 
 #Preview {
     TabBarView()

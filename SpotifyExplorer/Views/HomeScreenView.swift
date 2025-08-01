@@ -35,7 +35,7 @@ struct HomeScreenView: View {
                     
                     ZStack{
                         Circle()
-                            .fill(Color.lightPurple.opacity(0.5))
+                            .fill(Color.lightPurple.opacity(0.7))
                             .frame(width: 220, height: 220)
                             .blur(radius: 50)
                         
@@ -64,7 +64,10 @@ struct HomeScreenView: View {
                             .fontWeight(.semibold)
                             .foregroundStyle(Color(.darkPurple))
                             .frame(width: 300, height: 60)
-                            .background(.purpleHighlight)
+                            .background((LinearGradient(
+                                colors: [Color.lightPurple, Color.green],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing)))
                             .cornerRadius(50)
                     }
                     .padding(.bottom, 40)
