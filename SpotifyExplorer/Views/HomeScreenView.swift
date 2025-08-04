@@ -80,4 +80,5 @@ struct HomeScreenView: View {
 
 #Preview {
     HomeScreenView()
+        .environmentObject(FavoritesViewModel()) 
 }

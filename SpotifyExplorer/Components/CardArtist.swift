@@ -8,30 +8,40 @@
 import SwiftUI
 
 struct CardArtistView: View {
-    let artist = MockData.sampleArtist
+    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
+    
+    let artist: Artist
     
     var body: some View {
         HStack{
-            AsyncImage(url: URL(string: artist[0].image))
+            AsyncImage(url: URL(string: artist.image))
                 .frame(width: 125, height: 120)
                 .cornerRadius(8)
             
             VStack(alignment: .leading, spacing: 8) {
-                Text(artist[0].name)
+                Text(artist.name)
                     .font(.title3)
                     .foregroundStyle(.white)
                 
-                Text("Seguidores: \(artist[0].followers)")
+                Text("Gênero:")
+                    .foregroundStyle(.grayLight)
+                    .font(.footnote)
+                
+                Text("Seguidores: \(artist.followers)")
                     .foregroundStyle(.grayLight)
                     .padding(.bottom, 15)
                     .font(.footnote)
                 
                 HStack{
-                    Image(systemName: "heart")
-                        .foregroundStyle(.lightPurple)
-                    Text("Favoritar")
-                        .foregroundStyle(.grayLight)
-                        .font(.subheadline)
+                    Button(action: {
+                        favoritesViewModel.toggleFavorite(for: artist)
+                    }) {
+                        Image(systemName: favoritesViewModel.isFavorite(artist) ? "heart.fill" : "heart")
+                            .foregroundStyle(.lightPurple)
+                        Text(favoritesViewModel.isFavorite(artist) ? "Remover dos favoritos" : "Favoritar")
+                            .foregroundStyle(.grayLight)
+                            .font(.subheadline)
+                    }
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -51,5 +61,6 @@ struct CardArtistView: View {
 
 
 #Preview {
-    CardArtistView()
+    CardArtistView(artist: MockData.sampleArtist[0])
+        .environmentObject(FavoritesViewModel())
 }

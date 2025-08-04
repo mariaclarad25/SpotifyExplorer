@@ -8,20 +8,26 @@
 import SwiftUI
 
 struct CardFavorites: View {
-    let artist = MockData.sampleArtist
+    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
+    
+    let artist: Artist
     
     var body: some View {
         VStack{
-            AsyncImage(url: URL(string: artist[0].image))
+            AsyncImage(url: URL(string: artist.image))
                 .frame(width: 125, height: 135)
                 .cornerRadius(8)
             
-            Text("\(artist[0].name)")
+            Text("\(artist.name)")
                 .foregroundStyle(.grayLight)
             
-            Image(systemName: "heart")
-                .foregroundStyle(.lightPurple)
-                .padding(.top, -6)
+            Button(action: {
+                favoritesViewModel.toggleFavorite(for: artist)
+            }) {
+                Image(systemName: favoritesViewModel.isFavorite(artist) ? "heart.fill" : "heart")
+                    .foregroundStyle(.lightPurple)
+                    .padding(.top, -6)
+            }
         }
         .padding()
         .background(.purpleHighlight)
@@ -37,5 +43,6 @@ struct CardFavorites: View {
 }
 
 #Preview {
-    CardFavorites()
+    CardFavorites(artist: MockData.sampleArtist[0])
+        .environmentObject(FavoritesViewModel())
 }

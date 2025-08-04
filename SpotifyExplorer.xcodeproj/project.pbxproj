@@ -23,6 +23,8 @@
 		B7F0D0712E3A28F6008DB1E7 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F0D0702E3A28F6008DB1E7 /* PreviewData.swift */; };
 		B7F0D0732E3A397D008DB1E7 /* CardArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F0D0722E3A397D008DB1E7 /* CardArtist.swift */; };
 		B7F0D0752E3A5AFC008DB1E7 /* GenreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F0D0742E3A5AFC008DB1E7 /* GenreButton.swift */; };
+		B7F72CC72E40C366007E26C3 /* SearchArtistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F72CC62E40C366007E26C3 /* SearchArtistViewModel.swift */; };
+		B7F72CC92E40D533007E26C3 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F72CC82E40D533007E26C3 /* FavoritesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		B7F0D0702E3A28F6008DB1E7 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		B7F0D0722E3A397D008DB1E7 /* CardArtist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardArtist.swift; sourceTree = "<group>"; };
 		B7F0D0742E3A5AFC008DB1E7 /* GenreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreButton.swift; sourceTree = "<group>"; };
+		B7F72CC62E40C366007E26C3 /* SearchArtistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArtistViewModel.swift; sourceTree = "<group>"; };
+		B7F72CC82E40D533007E26C3 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 				B7A5AD9E2E462D1F00FC6FEA /* Model */,
 				B7F0D0762E3A671B008DB1E7 /* Components */,
 				B792F2E02E37B572007F0572 /* Views */,
+				B7F72CC52E40C2BC007E26C3 /* ViewModel */,
 				B792F2D22E37A5FD007F0572 /* SpotifyExplorerApp.swift */,
 				B792F2D62E37A601007F0572 /* Assets.xcassets */,
 				B792F2D82E37A601007F0572 /* Preview Content */,
@@ -125,6 +130,15 @@
 				B7BDC6D32E3BB7B200BE8A4D /* CardFavorites.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		B7F72CC52E40C2BC007E26C3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B7F72CC62E40C366007E26C3 /* SearchArtistViewModel.swift */,
+				B7F72CC82E40D533007E26C3 /* FavoritesViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +225,8 @@
 				B7BDC6D42E3BB7B200BE8A4D /* CardFavorites.swift in Sources */,
 				B7BDC6D22E3B811F00BE8A4D /* CardSuggestion.swift in Sources */,
 				B792F2D32E37A5FD007F0572 /* SpotifyExplorerApp.swift in Sources */,
+				B7F72CC72E40C366007E26C3 /* SearchArtistViewModel.swift in Sources */,
+				B7F72CC92E40D533007E26C3 /* FavoritesViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

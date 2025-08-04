@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct FavoriteArtists: View {
+    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
+    
     var body: some View {
         ZStack{
             Color(.darkPurple).ignoresSafeArea()
-
+            
             VStack{
                 Text("Meus Favoritos")
                     .font(.system(size: 30, weight: .bold))
@@ -19,12 +21,19 @@ struct FavoriteArtists: View {
                     .foregroundStyle(.grayLight)
                     .padding(.horizontal)
                     .padding(.top, 20)
-                    .padding()
-                 
-                ScrollView{
-                    HStack(spacing: 50) {
-                        CardFavorites()
-                        CardFavorites()
+                
+                if favoritesViewModel.favoriteArtists.isEmpty {
+                    Text("Nenhum artista favoritado ainda.")
+                        .foregroundStyle(Color(.grayMedium))
+                        .padding()
+                } else {
+                        ScrollView {
+                            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+                                ForEach(favoritesViewModel.favoriteArtists) { artist in
+                                    CardFavorites(artist: artist)
+                                }
+                            }
+                            .padding(.bottom, 30)
                     }
                 }
                 Spacer()
@@ -35,4 +44,5 @@ struct FavoriteArtists: View {
 
 #Preview {
     FavoriteArtists()
+        .environmentObject(FavoritesViewModel())
 }

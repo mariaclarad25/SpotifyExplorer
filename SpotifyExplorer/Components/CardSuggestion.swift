@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CardSuggestion: View {
+    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
+    
     let artist: Artist
     
     var body: some View {
@@ -33,9 +35,13 @@ struct CardSuggestion: View {
                         .padding(.horizontal)
                 }
                 
-                Image(systemName: "heart")
-                    .foregroundStyle(.darkPurple)
-                    .padding()
+                Button(action: {
+                    favoritesViewModel.toggleFavorite(for: artist)
+                }) {
+                    Image(systemName: favoritesViewModel.isFavorite(artist) ? "heart.fill" : "heart")
+                        .foregroundStyle(.darkPurple)
+                        .padding()
+                }
             }
             Spacer()
         }
@@ -49,7 +55,7 @@ struct CardSuggestion: View {
     }
 }
 
-
 #Preview {
     CardSuggestion(artist: MockData.sampleArtist[0])
+        .environmentObject(FavoritesViewModel())
 }

@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct SearchArtistView: View {
-    @State private var searchBar = ""
-    
-    let popularArtists = MockData.sampleArtist.filter { $0.popularity > 70 }
-    let newArtists = MockData.sampleArtist.filter { $0.popularity <= 70 }
+    @StateObject private var viewModel = SearchArtistViewModel()
+    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
     
     var body: some View {
         ZStack{
@@ -25,12 +23,12 @@ struct SearchArtistView: View {
                     
                     HStack {
                         ZStack(alignment: .leading) {
-                            if searchBar.isEmpty {
+                            if viewModel.searchText.isEmpty {
                                 Text("Pesquisar")
                                     .foregroundColor(.gray)
                             }
                             
-                            TextField("", text: $searchBar)
+                            TextField("", text: $viewModel.searchText)
                                 .foregroundColor(.black)
                         }
                         
@@ -41,58 +39,65 @@ struct SearchArtistView: View {
                     .background(Color.white.opacity(0.8))
                     .cornerRadius(20)
                     .padding(.horizontal)
-
-                    Text("Artistas em Destaque")
-                        .styleSubtitlesArtistView()
-                        .padding(.top, 10)
                     
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack{
-                            ForEach(popularArtists) { artist in
-                                CardSuggestion(artist: artist)
+                    if viewModel.searchText.isEmpty {
+                        Text("Artistas em Destaque")
+                            .styleSubtitlesArtistView()
+                            .padding(.top, 10)
+                        
+                        ScrollView(.horizontal, showsIndicators: false){
+                            HStack{
+                                ForEach(viewModel.popularArtist) { artist in
+                                    CardSuggestion(artist: artist)
+                                }
                             }
+                            .padding(.top, -16)
                         }
-                        .padding(.top, -16)
-                    }
-            
-                    
-                    Text("Descubra Novos Talentos")
-                        .styleSubtitlesArtistView()
-                        .padding(.top)
-                    
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack{
-                            ForEach(newArtists) { artist in
-                                CardSuggestion(artist: artist)
+                        
+                        
+                        Text("Descubra Novos Talentos")
+                            .styleSubtitlesArtistView()
+                            .padding(.top)
+                        
+                        ScrollView(.horizontal, showsIndicators: false){
+                            HStack{
+                                ForEach(viewModel.newArtist) { artist in
+                                    CardSuggestion(artist: artist)
+                                }
                             }
+                            .padding(.top, -16)
                         }
-                        .padding(.top, -16)
-                    }
-                    
-                    Text("Genêros Musicais")
-                        .styleSubtitlesArtistView()
-                    
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack(spacing:18) {
-                            ForEach(["Trap", "Pop", "Sertanejo", "Hip-Hop", "Pagode"], id: \.self) { genre in
-                                GenreButton(genre: genre) {
-                                    print("Selecionado: \(genre)")
+                        
+                        Text("Gêneros Musicais")
+                            .styleSubtitlesArtistView()
+                        
+                        ScrollView(.horizontal, showsIndicators: false){
+                            HStack(spacing:18) {
+                                ForEach(["Trap", "Pop", "Sertanejo", "Hip-Hop", "Pagode"], id: \.self) { genre in
+                                    GenreButton(genre: genre) {
+                                        print("Selecionado: \(genre)")
+                                    }
+                                }
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.bottom)
+                        }
+                    } else {
+                        VStack(alignment: .leading) {
+                            if viewModel.filteredArtists.isEmpty {
+                                Text("Nenhum artista encontrado")
+                                    .foregroundColor(.white)
+                                    .padding()
+                            } else {
+                                ForEach(viewModel.filteredArtists) { artist in
+                                    CardArtistView(artist: artist)
                                 }
                             }
                         }
-                        .padding(.horizontal, 20)
-                        .padding(.bottom)
+                        .padding()
                         
                         Spacer()
                     }
-                    
-                    ScrollView{
-                        if searchBar.lowercased() == MockData.sampleArtist[0].name.lowercased() {
-                            CardArtistView()
-                                .padding()
-                        }
-                    }
-                    Spacer()
                 }
             }
         }
@@ -101,4 +106,5 @@ struct SearchArtistView: View {
 
 #Preview {
     SearchArtistView()
+        .environmentObject(FavoritesViewModel())
 }
