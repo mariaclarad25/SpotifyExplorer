@@ -7,40 +7,8 @@
 
 import Foundation
 
-// MARK: - Artist Model
-struct Artist: Identifiable, Codable, Equatable {
-    let id: String
-    let name: String
-    let image: String
-    let imageLarge: String
-    let genres: [String]
-    let followers: Int
-    let popularity: Int
-}
-
-// MARK: - Track Model
-struct Track: Identifiable, Codable, Equatable {
-    let id: String
-    let name: String
-    let previewUrl: String?
-    let albumName: String
-    let image: String
-    let spotifyUrl: String
-}
-
-// MARK: - Album Model
-struct Album: Identifiable, Codable, Equatable {
-    let id: String
-    let name: String
-    let image: String
-    let releaseDate: String
-    let totalTracks: Int
-}
-
-// MARK: - MockData
 struct MockData {
     
-    // Artistas
     static let sampleArtist = [
         Artist(
             id: "7y97mc3bZRFXzT2szRM4L4",
@@ -71,7 +39,6 @@ struct MockData {
         )
     ]
     
-    // Músicas populares - Luan Santana
     static let sampleTracks = [
         Track(
             id: "1",
@@ -114,7 +81,6 @@ struct MockData {
             spotifyUrl: "https://open.spotify.com/track/5te-esperando"
         ),
 
-        // Músicas populares - Veigh
         Track(
             id: "6",
             name: "Novo Balanço",
@@ -140,7 +106,6 @@ struct MockData {
             spotifyUrl: "https://open.spotify.com/track/8pra-sempre"
         ),
 
-        // Músicas populares - Artista Novo
         Track(
             id: "9",
             name: "Luzes da Cidade",
@@ -159,7 +124,6 @@ struct MockData {
         )
     ]
     
-    // Álbuns - Luan Santana
     static let sampleAlbums = [
         Album(
             id: "1",
@@ -183,7 +147,6 @@ struct MockData {
             totalTracks: 15
         ),
 
-        // Álbuns - Veigh
         Album(
             id: "4",
             name: "Dos Prédios Deluxe",
@@ -199,7 +162,6 @@ struct MockData {
             totalTracks: 12
         ),
 
-        // Álbuns - Artista Novo
         Album(
             id: "6",
             name: "Horizonte Azul",

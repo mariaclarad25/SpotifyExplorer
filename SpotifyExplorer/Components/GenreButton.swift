@@ -16,7 +16,8 @@ struct GenreButton: View {
             Text(genre.capitalized)
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundStyle(.white)
-                .frame(width: 110, height: 110)                .background(Circle().fill(
+                .frame(width: 110, height: 110)                
+                .background(Circle().fill(
                     LinearGradient(
                         colors: [Color.purpleHighlight, Color.greenLigth],
                         startPoint: .topLeading,
