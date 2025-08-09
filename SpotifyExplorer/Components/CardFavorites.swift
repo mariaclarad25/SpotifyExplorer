@@ -14,24 +14,16 @@ struct CardFavorites: View {
     
     var body: some View {
         VStack{
-            AsyncImage(url: URL(string: artist.image))
-                .frame(width: 125, height: 135)
-                .cornerRadius(8)
+            artistImage
+            artistName
             
-            Text("\(artist.name)")
-                .foregroundStyle(.grayLight)
+            FavoriteButton(artist: artist, favoritesViewModel: favoritesViewModel, color: .lightPurple)
+                .padding(.bottom, 10)
             
-            Button(action: {
-                favoritesViewModel.toggleFavorite(for: artist)
-            }) {
-                Image(systemName: favoritesViewModel.isFavorite(artist) ? "heart.fill" : "heart")
-                    .foregroundStyle(.lightPurple)
-                    .padding(.top, -6)
-            }
         }
         .padding()
         .background(.purpleHighlight)
-        .frame(width: 140, height: 205)
+        .frame(width: 140, height: 210)
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
@@ -39,6 +31,33 @@ struct CardFavorites: View {
         )
         .shadow(color: Color.lightPurple.opacity(0.8), radius: 2, x: 0, y: 0)
         .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
+}
+
+// MARK: - Components
+private extension CardFavorites {
+    var artistImage: some View {
+        AsyncImage(url: URL(string: artist.image)) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        } placeholder: {
+            Rectangle()
+                .fill(Color.gray.opacity(0.3))
+                .overlay(
+                    Image(systemName: "person.fill")
+                        .foregroundColor(.gray)
+                        .font(.title)
+                )
+        }
+        .frame(width: 125, height: 135)
+        .cornerRadius(8)
+    }
+    
+    var artistName: some View {
+        Text("\(artist.name)")
+            .foregroundStyle(.grayLight)
+            .padding(.bottom, 4)
     }
 }
 

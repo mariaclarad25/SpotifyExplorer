@@ -27,3 +27,13 @@ extension View {
             .padding(.horizontal)
     }
 }
+
+func formatFollowers(_ followers: Int) -> String {
+    if followers >= 1_000_000 {
+        return String(format: "%.1fM", Double(followers) / 1_000_000)
+    } else if followers >= 1_000 {
+        return String(format: "%.1fK", Double(followers) / 1_000)
+    } else {
+        return "\(followers)"
+    }
+}
