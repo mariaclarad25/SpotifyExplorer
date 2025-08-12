@@ -66,6 +66,6 @@ private extension CardAlbum {
 #Preview {
     ZStack {
         Color(.darkPurple).ignoresSafeArea()
-        CardAlbum(album: MockData.sampleAlbums[0])
+        CardAlbum(album: PreviewData.sampleAlbums[0])
     }
 }

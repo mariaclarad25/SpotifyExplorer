@@ -65,6 +65,6 @@ private extension CardSuggestion {
 }
 
 #Preview {
-    CardSuggestion(artist: MockData.sampleArtist[0])
+    CardSuggestion(artist: PreviewData.sampleArtist[0])
         .environmentObject(FavoritesViewModel())
 }

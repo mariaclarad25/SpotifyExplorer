@@ -101,6 +101,6 @@ private extension DetailsScreenHeader {
 }
 
 #Preview {
-    DetailsScreenHeader(artist: MockData.sampleArtist[0])
+    DetailsScreenHeader(artist: PreviewData.sampleArtist[0])
         .environmentObject(FavoritesViewModel())
 }

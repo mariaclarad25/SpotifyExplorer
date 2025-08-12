@@ -37,5 +37,5 @@ struct FavoriteButton: View {
 
 
 #Preview {
-    FavoriteButton(artist: MockData.sampleArtist[0], favoritesViewModel: FavoritesViewModel())
+    FavoriteButton(artist: PreviewData.sampleArtist[0], favoritesViewModel: FavoritesViewModel())
 }

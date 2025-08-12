@@ -57,7 +57,7 @@ private extension FavoriteArtists {
     }
 }
 
-// MARK: - Empty States
+// MARK: - States
 private extension FavoriteArtists {
     var favoritesEmpty: some View {
         Text("Nenhum artista favoritado ainda.")

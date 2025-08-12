@@ -41,13 +41,14 @@ private extension SearchArtistView {
                 }
             }
         }
+        .ignoresSafeArea(edges: .top)
     }
     
     var headerSection: some View {
         Text("Spotify Explorer")
             .font(.system(size: 22, weight: .bold))
             .foregroundStyle(.greenCustom)
-            .padding()
+            .padding(.top, 80)
     }
     
     var searchBarSection: some View {
@@ -159,7 +160,7 @@ private extension SearchArtistView {
     }
 }
 
-// MARK: - Helper Functions
+// MARK: - Function
 private extension SearchArtistView {
     func genreSheet(genre: IdentifiableString) -> some View {
         ListGenreView(genre: genre.value)
@@ -167,7 +168,6 @@ private extension SearchArtistView {
 }
 
 // MARK: - Supporting Types
-
 struct IdentifiableString: Identifiable {
     let id = UUID()
     let value: String

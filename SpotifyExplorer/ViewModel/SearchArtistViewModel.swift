@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class SearchArtistViewModel: ObservableObject {
-    @Published var allArtists: [Artist] = MockData.sampleArtist
+    @Published var allArtists: [Artist] = PreviewData.sampleArtist
     @Published var searchText: String = ""
     @Published var filteredArtists: [Artist] = []
     
@@ -25,9 +25,8 @@ class SearchArtistViewModel: ObservableObject {
     
     init() {
         $searchText
-            .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main) //evita filtro a cada letra digitada rápido
+            .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
             .removeDuplicates()
-        //transforma texto em lista filtrada de artistas
             .map { [weak self] text in
                 guard let self = self else { return [] }
                 if text.isEmpty {

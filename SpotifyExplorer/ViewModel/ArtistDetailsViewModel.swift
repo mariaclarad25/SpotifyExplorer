@@ -15,19 +15,20 @@ final class ArtistDetailsViewModel: ObservableObject {
     }
     
     var albumsForArtist: [Album] {
-        MockData.sampleAlbums.filter { $0.artistId == artist.id }
+        PreviewData.sampleAlbums.filter { $0.artistId == artist.id }
     }
     
-    var tracksForArtist: [Track] {
-        MockData.sampleTracks
+    var topTracksForArtist: [Track] {
+        Array(
+        PreviewData.sampleTracks
                 .filter { $0.artistId == artist.id }
-                .sorted { $0.popularity > $1.popularity } //ordena por popularidade decrescente
+                .sorted(by: { $0.popularity > $1.popularity })
                 .prefix(5)
-                .map { $0 }
+        )
     }
     
     func tracksForAlbum(_ albumId: String) -> [Track] {
-        MockData.sampleTracks
+        PreviewData.sampleTracks
             .filter { $0.albumId == albumId }
     }
 }

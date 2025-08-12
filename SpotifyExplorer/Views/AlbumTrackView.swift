@@ -46,7 +46,7 @@ private extension AlbumTrackView {
     }
 }
 
-// MARK: - Content States
+// MARK: - States
 private extension AlbumTrackView {
     var trackList: some View {
         ScrollView{
@@ -74,7 +74,7 @@ private extension AlbumTrackView {
 
 #Preview {
     AlbumTrackView(
-        album: MockData.sampleAlbums[0],
-        tracks: MockData.sampleTracks.filter { $0.albumId == MockData.sampleAlbums[0].id }
+        album: PreviewData.sampleAlbums[0],
+        tracks: PreviewData.sampleTracks.filter { $0.albumId == PreviewData.sampleAlbums[0].id }
     )
 }

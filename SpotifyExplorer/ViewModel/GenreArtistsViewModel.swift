@@ -21,16 +21,13 @@ class GenrerAtistsViewModel: ObservableObject {
     
     private func loadArtists() {
         isLoading = true
-        // Simula um delay de rede (remova quando usar API real)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            // Filtra artistas que contêm o gênero selecionado (case insensitive)
-            self.artists = MockData.sampleArtist.filter { artist in
+            self.artists = PreviewData.sampleArtist.filter { artist in
                 artist.genres.contains { genre in
                     genre.lowercased().contains(self.selectedGenre.lowercased()) ||
                     self.selectedGenre.lowercased().contains(genre.lowercased())
                 }
             }
             self.isLoading = false
-        }
+        
     }
 }

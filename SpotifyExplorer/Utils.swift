@@ -11,7 +11,7 @@ import UIKit
 func configureTabBarAppearance() {
     let appearance = UITabBarAppearance()
     appearance.configureWithOpaqueBackground()
-    appearance.backgroundColor = UIColor(named: "grayishPurple")
+    appearance.backgroundColor = UIColor(named: "GrayishPurple")
     
     UITabBar.appearance().standardAppearance = appearance
     UITabBar.appearance().scrollEdgeAppearance = appearance

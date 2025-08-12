@@ -43,7 +43,6 @@ struct ArtistDetailsView: View {
 }
 
 // MARK: - Components
-
 private extension ArtistDetailsView {
     var headerSection: some View {
         DetailsScreenHeader(artist: viewModel.artist)
@@ -118,11 +117,11 @@ private extension ArtistDetailsView {
         VStack(alignment: .leading, spacing: 8) {
             sectionHeader("Top faixas")
                
-            if viewModel.tracksForArtist.isEmpty {
+            if viewModel.topTracksForArtist.isEmpty {
                 Text("Nenhuma faixa disponível")
                     .foregroundColor(.grayLight)
             } else {
-                ForEach(viewModel.tracksForArtist) { track in
+                ForEach(viewModel.topTracksForArtist) { track in
                     CardTracks(track: track)
                 }
             }
@@ -137,7 +136,6 @@ private extension ArtistDetailsView {
 }
 
 // MARK: - View Modifiers
-
 private extension View {
     func navigationConfiguration() -> some View {
         self
@@ -152,7 +150,6 @@ private extension View {
 }
 
 // MARK: - Suporting Views
-
 private struct BackButton: View {
     @Environment(\.presentationMode) var presentationMode
     
@@ -165,7 +162,6 @@ private struct BackButton: View {
                 .font(.system(size: 18, weight: .medium))
         }
     }
-    
 }
 
 private struct StatView: View {
@@ -187,7 +183,7 @@ private struct StatView: View {
 }
 
 #Preview {
-    let sampleArtist = MockData.sampleArtist[0]
+    let sampleArtist = PreviewData.sampleArtist[0]
     let viewModel = ArtistDetailsViewModel(artist: sampleArtist)
     return ArtistDetailsView(viewModel: viewModel)
         .environmentObject(FavoritesViewModel())

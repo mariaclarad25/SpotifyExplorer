@@ -56,7 +56,7 @@ private extension ListGenreView {
     }
 }
 
-// MARK: - Content States
+// MARK: - States
 private extension ListGenreView {
     var loadingSection: some View {
         VStack{

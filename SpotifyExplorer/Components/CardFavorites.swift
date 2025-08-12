@@ -62,6 +62,6 @@ private extension CardFavorites {
 }
 
 #Preview {
-    CardFavorites(artist: MockData.sampleArtist[0])
+    CardFavorites(artist: PreviewData.sampleArtist[0])
         .environmentObject(FavoritesViewModel())
 }

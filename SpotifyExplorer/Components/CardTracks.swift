@@ -54,6 +54,6 @@ private func formatDuration(_ durationMs: Int) -> String {
 #Preview {
     ZStack {
         Color(.purpleHighlight).ignoresSafeArea()
-        CardTracks(track: MockData.sampleTracks[0])
+        CardTracks(track: PreviewData.sampleTracks[0])
     }
 }

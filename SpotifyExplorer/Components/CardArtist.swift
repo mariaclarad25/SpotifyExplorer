@@ -112,7 +112,7 @@ private extension CardArtistView {
 #Preview {
     ZStack {
         Color(.darkPurple).ignoresSafeArea()
-        CardArtistView(artist: MockData.sampleArtist[0])
+        CardArtistView(artist: PreviewData.sampleArtist[0])
             .environmentObject(FavoritesViewModel())
     }
 }
