@@ -8,24 +8,22 @@
 import SwiftUI
 
 struct CardFavorites: View {
-    let artist = MockData.sampleArtist
+    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
+    
+    let artist: Artist
     
     var body: some View {
         VStack{
-            AsyncImage(url: URL(string: artist[0].image))
-                .frame(width: 125, height: 135)
-                .cornerRadius(8)
+            artistImage
+            artistName
             
-            Text("\(artist[0].name)")
-                .foregroundStyle(.grayLight)
+            FavoriteButton(artist: artist, favoritesViewModel: favoritesViewModel, color: .lightPurple)
+                .padding(.bottom, 10)
             
-            Image(systemName: "heart")
-                .foregroundStyle(.lightPurple)
-                .padding(.top, -6)
         }
         .padding()
         .background(.purpleHighlight)
-        .frame(width: 140, height: 205)
+        .frame(width: 140, height: 210)
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
@@ -36,6 +34,34 @@ struct CardFavorites: View {
     }
 }
 
+// MARK: - Components
+private extension CardFavorites {
+    var artistImage: some View {
+        AsyncImage(url: URL(string: artist.image)) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        } placeholder: {
+            Rectangle()
+                .fill(Color.gray.opacity(0.3))
+                .overlay(
+                    Image(systemName: "person.fill")
+                        .foregroundColor(.gray)
+                        .font(.title)
+                )
+        }
+        .frame(width: 125, height: 135)
+        .cornerRadius(8)
+    }
+    
+    var artistName: some View {
+        Text("\(artist.name)")
+            .foregroundStyle(.grayLight)
+            .padding(.bottom, 4)
+    }
+}
+
 #Preview {
-    CardFavorites()
+    CardFavorites(artist: PreviewData.sampleArtist[0])
+        .environmentObject(FavoritesViewModel())
 }

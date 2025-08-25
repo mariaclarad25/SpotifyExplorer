@@ -18,59 +18,22 @@ struct HomeScreenView: View {
                 Color(.darkPurple).ignoresSafeArea()
                 
                 VStack(spacing: 30) {
-                    Image("SpotifyNameImage")
-                        .resizable()
-                        .scaledToFit()
-                        .padding(.top, 40)
-                        .opacity(nameOpacity)
-                        .offset(y: nameOffset)
-                        .onAppear {
-                            withAnimation(.easeOut(duration: 2.0)) {
-                                nameOpacity = 1.0
-                                nameOffset = 0
-                            }
-                        }
+                    nameSpotifyImage
                     
                     Spacer()
                     
                     ZStack{
-                        Circle()
-                            .fill(Color.lightPurple.opacity(0.7))
-                            .frame(width: 220, height: 220)
-                            .blur(radius: 50)
-                        
-                        Image("SpotifyLogoImage")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 180, height: 180)
-                            .scaleEffect(pulse ? 1.05 : 0.95)
-                            .animation(.easeInOut(duration: 1.2).repeatForever(autoreverses: true), value: pulse)
+                        circleShadow
+                        brandSporifyImage
                     }
                     .onAppear() {
                         pulse = true
                     }
-                    
-                    Text("Encontre seus artistas e músicas favoritas!")
-                        .foregroundStyle(Color(.lightPurple))
-                        .font(.system(size: 26))
-                        .multilineTextAlignment(.center)
-                        .padding(.top, 20)
+                    attractiveText
                     
                     Spacer()
                     
-                    NavigationLink(destination: TabBarView()) {
-                        Text("Quero começar!")
-                            .font(.system(size: 26))
-                            .fontWeight(.semibold)
-                            .foregroundStyle(Color(.darkPurple))
-                            .frame(width: 300, height: 60)
-                            .background((LinearGradient(
-                                colors: [Color.lightPurple, Color.green],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing)))
-                            .cornerRadius(50)
-                    }
-                    .padding(.bottom, 40)
+                    startButton
                 }
                 .padding(.horizontal)
             }
@@ -78,6 +41,65 @@ struct HomeScreenView: View {
     }
 }
 
+//MARK: - Components
+private extension HomeScreenView {
+    var nameSpotifyImage: some View {
+        Image("SpotifyNameImage")
+            .resizable()
+            .scaledToFit()
+            .padding(.top, 40)
+            .opacity(nameOpacity)
+            .offset(y: nameOffset)
+            .onAppear {
+                withAnimation(.easeOut(duration: 2.0)) {
+                    nameOpacity = 1.0
+                    nameOffset = 0
+                }
+            }
+    }
+    
+    var circleShadow: some View {
+        Circle()
+            .fill(Color.lightPurple.opacity(0.7))
+            .frame(width: 220, height: 220)
+            .blur(radius: 50)
+    }
+    
+    var brandSporifyImage: some View {
+        Image("SpotifyLogoImage")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 180, height: 180)
+            .scaleEffect(pulse ? 1.05 : 0.95)
+            .animation(.easeInOut(duration: 1.2).repeatForever(autoreverses: true), value: pulse)
+    }
+    
+    var attractiveText: some View {
+        Text("Encontre seus artistas e músicas favoritas!")
+            .foregroundStyle(Color(.lightPurple))
+            .font(.system(size: 26))
+            .multilineTextAlignment(.center)
+            .padding(.top, 20)
+    }
+    
+    var startButton: some View {
+        NavigationLink(destination: TabBarView()) {
+            Text("Começar!")
+                .font(.system(size: 26))
+                .fontWeight(.semibold)
+                .foregroundStyle(Color(.darkPurple))
+                .frame(width: 300, height: 60)
+                .background((LinearGradient(
+                    colors: [Color.lightPurple, Color.green],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing)))
+                .cornerRadius(50)
+        }
+        .padding(.bottom, 40)
+    }
+}
+
 #Preview {
     HomeScreenView()
+        .environmentObject(FavoritesViewModel())
 }

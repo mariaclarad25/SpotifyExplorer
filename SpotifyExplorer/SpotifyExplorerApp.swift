@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SpotifyExplorerApp: App {
+    @StateObject var favoritesViewModel = FavoritesViewModel()
+    
     var body: some Scene {
         WindowGroup {
             HomeScreenView()
+                .environmentObject(favoritesViewModel)
         }
     }
 }

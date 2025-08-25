@@ -7,30 +7,30 @@
 
 import SwiftUI
 
-struct TabBarView: View {
-        init() {
-            configureTabBarAppearance()
-        }
-    
+struct TabBarView: View {    
     var body: some View {
-            TabView {
-                SearchArtistView()
-                    .tabItem {
-                        Image(systemName: "music.mic")
-                        Text("Artistas")
-                    }
-                
-                FavoriteArtists()
-                    .tabItem {
-                        Image(systemName: "heart")
-                        Text("Favoritos")
-                    }
-            }
-            .tint(Color(.lightPurple))
-            .navigationBarBackButtonHidden(true)
+        TabView {
+            SearchArtistView()
+                .tabItem {
+                    Image(systemName: "music.mic")
+                    Text("Artistas")
+                }
+            
+            FavoriteArtists()
+                .tabItem {
+                    Image(systemName: "heart")
+                    Text("Favoritos")
+                }
         }
+        .tint(Color(.lightPurple))
+        .navigationBarBackButtonHidden(true)
+        .onAppear(
+            perform: {configureTabBarAppearance()
+            })
     }
+}
 
 #Preview {
     TabBarView()
+        .environmentObject(FavoritesViewModel())
 }

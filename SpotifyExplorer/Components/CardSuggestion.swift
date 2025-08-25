@@ -8,33 +8,21 @@
 import SwiftUI
 
 struct CardSuggestion: View {
+    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
+    
     let artist: Artist
     
     var body: some View {
         VStack{
-            AsyncImage(url: URL(string: artist.imageLarge))
-                .frame(width: 180, height: 180)
-                .cornerRadius(8)
-                .clipped()
-                .padding(.top, 10)
+            artistImage
             
             HStack{
                 VStack{
-                    Text("\(artist.name)")
-                        .font(.system(size: 16).bold())
-                        .foregroundStyle(.darkPurple)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal)
-                    
-                    Text("Popularidade: \(artist.popularity)")
-                        .font(.system(size: 12).bold())
-                        .foregroundStyle(.darkPurple.opacity(0.6))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal)
+                    artistName
+                    artistPopularity
                 }
                 
-                Image(systemName: "heart")
-                    .foregroundStyle(.darkPurple)
+                FavoriteButton(artist: artist, favoritesViewModel: favoritesViewModel, color: .darkPurple)
                     .padding()
             }
             Spacer()
@@ -49,7 +37,34 @@ struct CardSuggestion: View {
     }
 }
 
+// MARK: - Components
+private extension CardSuggestion {
+    var artistImage: some View {
+        AsyncImage(url: URL(string: artist.imageLarge))
+            .frame(width: 180, height: 180)
+            .cornerRadius(8)
+            .clipped()
+            .padding(.top, 10)
+    }
+    
+    var artistName: some View {
+        Text("\(artist.name)")
+            .font(.system(size: 16).bold())
+            .foregroundStyle(.darkPurple)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
+    }
+    
+    var artistPopularity: some View {
+        Text("Popularidade: \(artist.popularity)")
+            .font(.system(size: 12).bold())
+            .foregroundStyle(.darkPurple.opacity(0.6))
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
+    }
+}
 
 #Preview {
-    CardSuggestion(artist: MockData.sampleArtist[0])
+    CardSuggestion(artist: PreviewData.sampleArtist[0])
+        .environmentObject(FavoritesViewModel())
 }

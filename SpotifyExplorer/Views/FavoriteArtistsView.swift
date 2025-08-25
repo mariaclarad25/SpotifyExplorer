@@ -8,24 +8,19 @@
 import SwiftUI
 
 struct FavoriteArtists: View {
+    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
+    
     var body: some View {
         ZStack{
             Color(.darkPurple).ignoresSafeArea()
-
+            
             VStack{
-                Text("Meus Favoritos")
-                    .font(.system(size: 30, weight: .bold))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundStyle(.grayLight)
-                    .padding(.horizontal)
-                    .padding(.top, 20)
-                    .padding()
-                 
-                ScrollView{
-                    HStack(spacing: 50) {
-                        CardFavorites()
-                        CardFavorites()
-                    }
+                titleHeader
+                
+                if favoritesViewModel.favoriteArtists.isEmpty {
+                    favoritesEmpty
+                } else {
+                    favoriteArtistsGrid
                 }
                 Spacer()
             }
@@ -33,6 +28,45 @@ struct FavoriteArtists: View {
     }
 }
 
+// MARK: - Components
+private extension FavoriteArtists {
+    var titleHeader: some View {
+        Text("Meus Favoritos")
+            .font(.system(size: 30, weight: .bold))
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .foregroundStyle(.grayLight)
+            .padding(.horizontal)
+            .padding(.top, 20)
+        
+    }
+    
+    var favoriteArtistsGrid: some View {
+        ScrollView(showsIndicators: false) {
+            LazyVGrid(columns: [
+                GridItem(.flexible(), spacing: 16),
+                GridItem(.flexible(), spacing: 16)],
+                      spacing: 20
+            ) {
+                ForEach(favoritesViewModel.favoriteArtists) { artist in
+                    CardFavorites(artist: artist)
+                }
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 30)
+        }
+    }
+}
+
+// MARK: - States
+private extension FavoriteArtists {
+    var favoritesEmpty: some View {
+        Text("Nenhum artista favoritado ainda.")
+            .foregroundStyle(Color(.grayMedium))
+            .padding()
+    }
+}
+
 #Preview {
     FavoriteArtists()
+        .environmentObject(FavoritesViewModel())
 }
