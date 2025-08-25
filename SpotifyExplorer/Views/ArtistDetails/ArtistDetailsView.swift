@@ -10,7 +10,6 @@ import SwiftUI
 struct ArtistDetailsView: View {
     @StateObject private var viewModel: ArtistDetailsViewModel
     @State private var selectedAlbum: Album? = nil
-    @Environment(\.presentationMode) var presentationMode
     
     init(viewModel: ArtistDetailsViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -135,35 +134,7 @@ private extension ArtistDetailsView {
        }
 }
 
-// MARK: - View Modifiers
-private extension View {
-    func navigationConfiguration() -> some View {
-        self
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    BackButton()
-                }
-            }
-    }
-}
-
-// MARK: - Suporting Views
-private struct BackButton: View {
-    @Environment(\.presentationMode) var presentationMode
-    
-    var body: some View {
-        Button(action: {
-            presentationMode.wrappedValue.dismiss()
-        }) {
-            Image(systemName: "chevron.left")
-                .foregroundColor(.lightPurple)
-                .font(.system(size: 18, weight: .medium))
-        }
-    }
-}
-
+// MARK: - Suporting View
 private struct StatView: View {
     let title: String
     let value: String

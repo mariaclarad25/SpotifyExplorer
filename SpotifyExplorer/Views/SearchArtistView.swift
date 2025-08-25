@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SearchArtistView: View {
     @StateObject private var viewModel = SearchArtistViewModel()
-    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
     @State private var selectedGenre: IdentifiableString?
     
     var body: some View {

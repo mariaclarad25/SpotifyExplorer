@@ -9,9 +9,7 @@ import SwiftUI
 
 struct ListGenreView: View {
     let genre: String
-    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
     @StateObject private var viewModel: GenrerAtistsViewModel
-    @Environment(\.dismiss) private var dismiss
     
     init(genre: String) {
         self.genre = genre
@@ -35,12 +33,7 @@ struct ListGenreView: View {
 private extension ListGenreView {
     var headerSection: some View {
         Text(genre.capitalized)
-            .font(.title2)
-            .fontWeight(.bold)
-            .foregroundColor(.greenCustom)
-            .frame(alignment: .center)
-            .padding(.top, 10)
-            .padding(.bottom, 20)
+            .styleTitleSheet()
     }
     
     var mainContentSection: some View {

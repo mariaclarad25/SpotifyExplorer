@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7132C5A2E5C9D520050A289 /* TabBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7132C592E5C9D520050A289 /* TabBarAppearance.swift */; };
+		B7132C5C2E5C9DF90050A289 /* ViewNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7132C5B2E5C9DF90050A289 /* ViewNavigation.swift */; };
+		B7132C5E2E5C9E400050A289 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7132C5D2E5C9E400050A289 /* Formatter.swift */; };
 		B75EA0352E40FF6800019E97 /* ListGenreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75EA0342E40FF6800019E97 /* ListGenreView.swift */; };
 		B7706DFD2E38FE3D00D0E04C /* SearchArtistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7706DFC2E38FE3D00D0E04C /* SearchArtistView.swift */; };
 		B7706DFF2E3902CA00D0E04C /* FavoriteArtistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7706DFE2E3902CA00D0E04C /* FavoriteArtistsView.swift */; };
@@ -15,7 +18,7 @@
 		B786EC3B2E4B7F600091FC6B /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = B786EC3A2E4B7F600091FC6B /* Artist.swift */; };
 		B786EC3D2E4B7F700091FC6B /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = B786EC3C2E4B7F6F0091FC6B /* Album.swift */; };
 		B786EC3F2E4B80090091FC6B /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = B786EC3E2E4B80090091FC6B /* Track.swift */; };
-		B78B4CF82E3CDFBC004DC1F6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78B4CF72E3CDFBC004DC1F6 /* Utils.swift */; };
+		B78B4CF82E3CDFBC004DC1F6 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78B4CF72E3CDFBC004DC1F6 /* Styles.swift */; };
 		B78B4CFA2E3CEA3E004DC1F6 /* ArtistDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78B4CF92E3CEA3E004DC1F6 /* ArtistDetailsView.swift */; };
 		B78B4CFE2E3CFD80004DC1F6 /* CardAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78B4CFD2E3CFD80004DC1F6 /* CardAlbum.swift */; };
 		B792F2D32E37A5FD007F0572 /* SpotifyExplorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792F2D22E37A5FD007F0572 /* SpotifyExplorerApp.swift */; };
@@ -37,6 +40,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B7132C592E5C9D520050A289 /* TabBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAppearance.swift; sourceTree = "<group>"; };
+		B7132C5B2E5C9DF90050A289 /* ViewNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNavigation.swift; sourceTree = "<group>"; };
+		B7132C5D2E5C9E400050A289 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		B75EA0342E40FF6800019E97 /* ListGenreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListGenreView.swift; sourceTree = "<group>"; };
 		B7706DFC2E38FE3D00D0E04C /* SearchArtistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArtistView.swift; sourceTree = "<group>"; };
 		B7706DFE2E3902CA00D0E04C /* FavoriteArtistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteArtistsView.swift; sourceTree = "<group>"; };
@@ -45,7 +51,7 @@
 		B786EC3A2E4B7F600091FC6B /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		B786EC3C2E4B7F6F0091FC6B /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		B786EC3E2E4B80090091FC6B /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
-		B78B4CF72E3CDFBC004DC1F6 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B78B4CF72E3CDFBC004DC1F6 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		B78B4CF92E3CEA3E004DC1F6 /* ArtistDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailsView.swift; sourceTree = "<group>"; };
 		B78B4CFD2E3CFD80004DC1F6 /* CardAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAlbum.swift; sourceTree = "<group>"; };
 		B792F2CF2E37A5FD007F0572 /* SpotifyExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +84,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B7132C5F2E5C9ECB0050A289 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B7132C592E5C9D520050A289 /* TabBarAppearance.swift */,
+				B78B4CF72E3CDFBC004DC1F6 /* Styles.swift */,
+				B7132C5B2E5C9DF90050A289 /* ViewNavigation.swift */,
+				B7132C5D2E5C9E400050A289 /* Formatter.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		B786EC392E4B7F500091FC6B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,10 +128,10 @@
 				B7F0D0762E3A671B008DB1E7 /* Components */,
 				B792F2E02E37B572007F0572 /* Views */,
 				B7F72CC52E40C2BC007E26C3 /* ViewModel */,
+				B7132C5F2E5C9ECB0050A289 /* Utils */,
 				B792F2D22E37A5FD007F0572 /* SpotifyExplorerApp.swift */,
 				B792F2D62E37A601007F0572 /* Assets.xcassets */,
 				B792F2D82E37A601007F0572 /* Preview Content */,
-				B78B4CF72E3CDFBC004DC1F6 /* Utils.swift */,
 				B786EC372E4B7F420091FC6B /* PreviewData.swift */,
 			);
 			path = SpotifyExplorer;
@@ -246,21 +263,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7132C5C2E5C9DF90050A289 /* ViewNavigation.swift in Sources */,
 				B7BDCBE82E44D74C0012F609 /* AlbumTrackView.swift in Sources */,
 				B786EC3F2E4B80090091FC6B /* Track.swift in Sources */,
-				B78B4CF82E3CDFBC004DC1F6 /* Utils.swift in Sources */,
+				B78B4CF82E3CDFBC004DC1F6 /* Styles.swift in Sources */,
 				B7E246202E43999A00E19844 /* FavoriteButton.swift in Sources */,
 				B78B4CFE2E3CFD80004DC1F6 /* CardAlbum.swift in Sources */,
 				B792F2D52E37A5FD007F0572 /* HomeScreenView.swift in Sources */,
 				B7B851102E42159500C0E9B7 /* GenreArtistsViewModel.swift in Sources */,
 				B7F0D0752E3A5AFC008DB1E7 /* GenreButton.swift in Sources */,
 				B7F0D0732E3A397D008DB1E7 /* CardArtist.swift in Sources */,
+				B7132C5E2E5C9E400050A289 /* Formatter.swift in Sources */,
 				B75EA0352E40FF6800019E97 /* ListGenreView.swift in Sources */,
 				B7706DFD2E38FE3D00D0E04C /* SearchArtistView.swift in Sources */,
 				B7706DFF2E3902CA00D0E04C /* FavoriteArtistsView.swift in Sources */,
 				B7BDCBE62E44D16E0012F609 /* ArtistDetailsViewModel.swift in Sources */,
 				B7706E012E39035100D0E04C /* TabBarView.swift in Sources */,
 				B786EC3B2E4B7F600091FC6B /* Artist.swift in Sources */,
+				B7132C5A2E5C9D520050A289 /* TabBarAppearance.swift in Sources */,
 				B7BDC6D42E3BB7B200BE8A4D /* CardFavorites.swift in Sources */,
 				B786EC382E4B7F420091FC6B /* PreviewData.swift in Sources */,
 				B7BDCBE42E44C3220012F609 /* CardTracks.swift in Sources */,

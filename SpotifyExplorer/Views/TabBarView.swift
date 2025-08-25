@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-struct TabBarView: View {
-    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
-    
+struct TabBarView: View {    
     var body: some View {
         TabView {
             SearchArtistView()

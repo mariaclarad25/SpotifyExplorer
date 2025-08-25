@@ -44,13 +44,6 @@ private extension CardTracks {
     }
 }
 
-// MARK: - Function
-private func formatDuration(_ durationMs: Int) -> String {
-    let minutes = durationMs / 60000
-    let seconds = (durationMs % 60000) / 1000
-    return String(format: "%d:%02d", minutes, seconds)
-}
-
 #Preview {
     ZStack {
         Color(.purpleHighlight).ignoresSafeArea()

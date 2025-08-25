@@ -37,12 +37,7 @@ struct AlbumTrackView: View {
 private extension AlbumTrackView {
     var albumName: some View {
         Text(album.name)
-            .font(.title2)
-            .fontWeight(.bold)
-            .foregroundColor(.greenCustom)
-            .frame(alignment: .center)
-            .padding(.top, 10)
-            .padding(.bottom, 20)
+            .styleTitleSheet()
     }
 }
 
