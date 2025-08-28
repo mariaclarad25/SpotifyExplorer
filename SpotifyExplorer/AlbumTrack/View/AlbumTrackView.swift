@@ -46,7 +46,7 @@ private extension AlbumTrackView {
 
 // MARK: - States
 private extension AlbumTrackView {
-    var trackList: some View {
+    var trackList: some View { 
         ScrollView{
             VStack(spacing: 6) {
                 ForEach(viewModel.tracks) { track in
