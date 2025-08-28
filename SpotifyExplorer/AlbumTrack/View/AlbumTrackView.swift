@@ -9,8 +9,10 @@ import SwiftUI
 
 struct AlbumTrackView: View {
     @StateObject private var viewModel: AlbumTrackViewModel
+    let album: Album
     
     init(album: Album) {
+        self.album  = album
         _viewModel = StateObject(wrappedValue: AlbumTrackViewModel(album: album))
     }
     
