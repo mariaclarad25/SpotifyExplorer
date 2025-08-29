@@ -13,12 +13,17 @@ struct Track: Identifiable, Codable {
     let artists: [Artist]?
     let album: Album?
     let popularity: Int?
-    let durationMs: Int? 
+    let images: [SpotifyImage]?
+    let durationMs: Int?
     let externalUrls: SpotifyExternalURLs?
     
     enum CodingKeys: String, CodingKey {
-        case id, name, artists, album, popularity
+        case id, name, artists, album, popularity, images
         case durationMs = "duration_ms"
         case externalUrls = "external_urls"
     }
+    
+    var imageURL: String? {
+          return album?.images?.first?.url
+      }
 }

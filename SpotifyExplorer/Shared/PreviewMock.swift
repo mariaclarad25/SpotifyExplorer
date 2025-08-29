@@ -112,6 +112,10 @@ struct PreviewData {
             artists: [sampleArtists[0]],
             album: sampleAlbums[1],
             popularity: 90,
+            images: [
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b273f7b3d3e2e1a1a1a1a1a1a1a1", height: 640, width: 640),
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d00001e02f7b3d3e2e1a1a1a1a1a1a1a1", height: 300, width: 300)
+            ],
             durationMs: 210000,
             externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/1morena")
         ),
@@ -121,6 +125,10 @@ struct PreviewData {
             artists: [sampleArtists[0]],
             album: sampleAlbums[0],
             popularity: 85,
+            images: [
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b273a2b2b2b2b2b2b2b2b2b2b2b2", height: 640, width: 640),
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d00001e02a2b2b2b2b2b2b2b2b2b2b2b2", height: 300, width: 300)
+            ],
             durationMs: 195000,
             externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/2abalo-emocional")
         ),
@@ -130,6 +138,10 @@ struct PreviewData {
             artists: [sampleArtists[1]],
             album: sampleAlbums[3],
             popularity: 75,
+            images: [
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b273c3c3c3c3c3c3c3c3c3c3c3c3", height: 640, width: 640),
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d00001e02c3c3c3c3c3c3c3c3c3c3c3c3", height: 300, width: 300)
+            ],
             durationMs: 205000,
             externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/6novo-balanco")
         ),
@@ -139,6 +151,10 @@ struct PreviewData {
             artists: [sampleArtists[1]],
             album: sampleAlbums[4],
             popularity: 65,
+            images: [
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b273d4d4d4d4d4d4d4d4d4d4d4d4", height: 640, width: 640),
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d00001e02d4d4d4d4d4d4d4d4d4d4d4d4", height: 300, width: 300)
+            ],
             durationMs: 220000,
             externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/7engana")
         ),
@@ -148,6 +164,10 @@ struct PreviewData {
             artists: [sampleArtists[1]],
             album: sampleAlbums[4],
             popularity: 60,
+            images: [
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b273e5e5e5e5e5e5e5e5e5e5e5e5", height: 640, width: 640),
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d00001e02e5e5e5e5e5e5e5e5e5e5e5e5", height: 300, width: 300)
+            ],
             durationMs: 210000,
             externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/8pra-sempre")
         ),
@@ -157,6 +177,10 @@ struct PreviewData {
             artists: [sampleArtists[2]],
             album: sampleAlbums[5],
             popularity: 40,
+            images: [
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b273f6f6f6f6f6f6f6f6f6f6f6f6", height: 640, width: 640),
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d00001e02f6f6f6f6f6f6f6f6f6f6f6f6", height: 300, width: 300)
+            ],
             durationMs: 195000,
             externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/9luzes")
         ),
@@ -166,6 +190,10 @@ struct PreviewData {
             artists: [sampleArtists[2]],
             album: sampleAlbums[6],
             popularity: 55,
+            images: [
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b273a7a7a7a7a7a7a7a7a7a7a7a7", height: 640, width: 640),
+                SpotifyImage(url: "https://i.scdn.co/image/ab67616d00001e02a7a7a7a7a7a7a7a7a7a7a7a7", height: 300, width: 300)
+            ],
             durationMs: 200000,
             externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/10tempestade")
         )

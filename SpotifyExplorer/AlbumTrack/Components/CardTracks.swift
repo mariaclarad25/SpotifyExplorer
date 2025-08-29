@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CardTracks: View {
     let track: Track
+    @State private var isButtonPressed = false
     
     var body: some View {
-        HStack {
-            iconNote
+        HStack(spacing: 10) {
+            musicImage
             musicName
             
             Spacer()
@@ -20,19 +22,35 @@ struct CardTracks: View {
             linkSpotifyButton
             musicDuration
         }
-        .padding()
-        .background(Color(.black).opacity(0.2))
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
+        .background(
+            LinearGradient(colors: [Color.purple.opacity(0.2), Color.lightPurple.opacity(0.2)],
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing)
+        )
         .cornerRadius(4)
-        .frame(maxWidth: .infinity)
+        .frame(width: 375, height: 64)
     }
 }
 
 // MARK: - Components
 private extension CardTracks {
-    var iconNote: some View {
-        Image(systemName: "music.note")
-            .font(.title3)
-            .foregroundColor(.white)
+    @MainActor
+    var musicImage: some View {
+        KFImage(URL(string: track.imageURL ?? ""))
+            .placeholder {
+                Image(systemName: "music.note")
+                    .font(.title3)
+                    .foregroundColor(.white)
+                    .frame(width: 45, height: 45)
+                    .background(Color.gray.opacity(0.3))
+                    .clipShape(RoundedRectangle(cornerRadius: 2))
+            }
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 45, height: 45)
+            .clipped()
     }
     
     var musicName: some View {
@@ -40,6 +58,7 @@ private extension CardTracks {
             .foregroundColor(.white)
             .lineLimit(1)
             .truncationMode(.tail)
+            .padding(.leading, 10)
     }
     
     var linkSpotifyButton: some View {
@@ -52,9 +71,15 @@ private extension CardTracks {
                 print("Failed to create Spotify URL")
             }
         }) {
-            Image(systemName: "play.fill")
-                .foregroundColor(.white)
-                .font(.system(size: 22))
+            ZStack {
+                Circle()
+                    .fill(Color.white.opacity(0.15))
+                    .frame(width: 32, height: 32)
+                
+                Image(systemName: "play.fill")
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundColor(.white)
+            }
         }
     }
     
@@ -66,7 +91,13 @@ private extension CardTracks {
 
 #Preview {
     ZStack {
-        Color(.purpleHighlight).ignoresSafeArea()
-        CardTracks(track: PreviewData.sampleTracks[0])
+        Color(.darkPurple).ignoresSafeArea()
+        
+        VStack(spacing: 8) {
+            CardTracks(track: PreviewData.sampleTracks[0])
+            CardTracks(track: PreviewData.sampleTracks[1])
+            CardTracks(track: PreviewData.sampleTracks[2])
+        }
+        .padding(.horizontal)
     }
 }
