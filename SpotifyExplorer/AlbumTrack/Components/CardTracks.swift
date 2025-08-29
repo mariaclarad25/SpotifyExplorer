@@ -17,6 +17,7 @@ struct CardTracks: View {
             
             Spacer()
             
+            linkSpotifyButton
             musicDuration
         }
         .padding()
@@ -39,6 +40,22 @@ private extension CardTracks {
             .foregroundColor(.white)
             .lineLimit(1)
             .truncationMode(.tail)
+    }
+    
+    var linkSpotifyButton: some View {
+        Button(action: {
+            let spotifyURL = "https://open.spotify.com/track/\(track.id)"
+            
+            if let url = URL(string: spotifyURL) {
+                UIApplication.shared.open(url)
+            } else {
+                print("Failed to create Spotify URL")
+            }
+        }) {
+            Image(systemName: "play.fill")
+                .foregroundColor(.white)
+                .font(.system(size: 22))
+        }
     }
     
     var musicDuration: some View {

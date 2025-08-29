@@ -113,8 +113,7 @@ struct PreviewData {
             album: sampleAlbums[1],
             popularity: 90,
             durationMs: 210000,
-            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/1morena"),
-            previewUrl: "https://p.scdn.co/mp3-preview/luan-morena.mp3"
+            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/1morena")
         ),
         Track(
             id: "2",
@@ -123,8 +122,7 @@ struct PreviewData {
             album: sampleAlbums[0],
             popularity: 85,
             durationMs: 195000,
-            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/2abalo-emocional"),
-            previewUrl: "https://p.scdn.co/mp3-preview/luan-abalo-emocional.mp3"
+            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/2abalo-emocional")
         ),
         Track(
             id: "6",
@@ -133,8 +131,7 @@ struct PreviewData {
             album: sampleAlbums[3],
             popularity: 75,
             durationMs: 205000,
-            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/6novo-balanco"),
-            previewUrl: "https://p.scdn.co/mp3-preview/veigh-novo-balanco.mp3"
+            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/6novo-balanco")
         ),
         Track(
             id: "7",
@@ -143,8 +140,7 @@ struct PreviewData {
             album: sampleAlbums[4],
             popularity: 65,
             durationMs: 220000,
-            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/7engana"),
-            previewUrl: "https://p.scdn.co/mp3-preview/veigh-engana.mp3"
+            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/7engana")
         ),
         Track(
             id: "8",
@@ -153,8 +149,7 @@ struct PreviewData {
             album: sampleAlbums[4],
             popularity: 60,
             durationMs: 210000,
-            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/8pra-sempre"),
-            previewUrl: "https://p.scdn.co/mp3-preview/veigh-pra-sempre.mp3"
+            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/8pra-sempre")
         ),
         Track(
             id: "9",
@@ -163,8 +158,7 @@ struct PreviewData {
             album: sampleAlbums[5],
             popularity: 40,
             durationMs: 195000,
-            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/9luzes"),
-            previewUrl: nil
+            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/9luzes")
         ),
         Track(
             id: "10",
@@ -173,8 +167,7 @@ struct PreviewData {
             album: sampleAlbums[6],
             popularity: 55,
             durationMs: 200000,
-            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/10tempestade"),
-            previewUrl: nil
+            externalUrls: SpotifyExternalURLs(spotify: "https://open.spotify.com/track/10tempestade")
         )
     ]
 }
