@@ -31,7 +31,8 @@ final class ArtistDetailsViewModel: ObservableObject {
                 async let tracksResult = SpotifyAPI.shared.getArtistTopTracks(artistId: artist.id)
                 async let albumsResult = SpotifyAPI.shared.getArtistAlbums(artistId: artist.id)
                 
-                self.topTracks = try await tracksResult
+                let fetchedTracks = try await tracksResult
+                self.topTracks = Array(fetchedTracks.sorted { $0.popularity ?? 0 > $1.popularity ?? 0 }.prefix(10))
                 self.albums = try await albumsResult
                 
             } catch let spotifyError as SpotifyError {

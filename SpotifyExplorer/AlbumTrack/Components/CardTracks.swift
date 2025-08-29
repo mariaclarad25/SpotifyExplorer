@@ -25,12 +25,12 @@ struct CardTracks: View {
         .padding(.horizontal, 14)
         .padding(.vertical, 10)
         .background(
-            LinearGradient(colors: [Color.purple.opacity(0.2), Color.lightPurple.opacity(0.2)],
+            LinearGradient(colors: [Color.purple.opacity(0.1), Color.lightPurple.opacity(0.1)],
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
         )
         .cornerRadius(4)
-        .frame(width: 375, height: 64)
+        .frame(width: 375, height: 58)
     }
 }
 
@@ -43,18 +43,20 @@ private extension CardTracks {
                 Image(systemName: "music.note")
                     .font(.title3)
                     .foregroundColor(.white)
-                    .frame(width: 45, height: 45)
+                    .frame(width: 40, height: 40)
                     .background(Color.gray.opacity(0.3))
                     .clipShape(RoundedRectangle(cornerRadius: 2))
             }
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(width: 45, height: 45)
+            .frame(width: 40, height: 40)
             .clipped()
     }
     
     var musicName: some View {
         Text(track.name)
+            .font(.system(size: 18))
+            .fontDesign(.rounded)
             .foregroundColor(.white)
             .lineLimit(1)
             .truncationMode(.tail)
@@ -85,6 +87,8 @@ private extension CardTracks {
     
     var musicDuration: some View {
         Text(formatDuration(track.durationMs ?? 0))
+            .font(.system(size: 18))
+            .fontDesign(.rounded)
             .foregroundColor(.grayLight)
     }
 }
