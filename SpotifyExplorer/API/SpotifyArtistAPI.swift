@@ -10,7 +10,7 @@ import Foundation
 extension SpotifyAPI {
     func searchArtists(query: String) async throws -> [Artist] {
         let encoded = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? query
-        guard let url = URL(string: "https://api.spotify.com/v1/search?q=\(encoded)&type=artist&limit=20") else {
+        guard let url = URL(string: "https://api.spotify.com/v1/search?q=\(encoded)&type=artist&limit=30") else {
             throw SpotifyError.invalidURL
         }
         let data = try await performRequest(url: url)

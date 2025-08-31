@@ -11,18 +11,22 @@ struct FavoriteArtists: View {
     @EnvironmentObject var favoritesViewModel: FavoritesViewModel
     
     var body: some View {
-        ZStack{
-            Color(.darkPurple).ignoresSafeArea()
-            
-            VStack{
-                titleHeader
+        NavigationStack{
+            ZStack{
+                Color(.darkPurple).ignoresSafeArea()
                 
-                if favoritesViewModel.favoriteArtists.isEmpty {
-                    favoritesEmpty
-                } else {
-                    favoriteArtistsGrid
+                VStack{
+                    titleHeader
+                    
+                    if favoritesViewModel.favoriteArtists.isEmpty {
+                        favoritesEmpty
+                    } else {
+                        favoriteArtistsGrid
+                    }
+                    Spacer()
                 }
-                Spacer()
+                .padding(.top, 80)
+                .edgesIgnoringSafeArea(.top)
             }
         }
     }
@@ -36,7 +40,6 @@ private extension FavoriteArtists {
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundStyle(.grayLight)
             .padding(.horizontal)
-            .padding(.top, 20)
         
     }
     
@@ -48,7 +51,9 @@ private extension FavoriteArtists {
                       spacing: 20
             ) {
                 ForEach(favoritesViewModel.favoriteArtists) { artist in
-                    CardFavorites(artist: artist)
+                    NavigationLink(destination: ArtistDetailsView(viewModel: ArtistDetailsViewModel(artist: artist))) {
+                        CardFavorites(artist: artist)
+                    }
                 }
             }
             .padding(.horizontal, 20)
@@ -60,7 +65,7 @@ private extension FavoriteArtists {
 // MARK: - States
 private extension FavoriteArtists {
     var favoritesEmpty: some View {
-        Text("Nenhum artista favoritado ainda.")
+        Text("Nenhum artista favoritado.")
             .foregroundStyle(Color(.grayMedium))
             .padding()
     }

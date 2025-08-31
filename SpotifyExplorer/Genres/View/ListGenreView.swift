@@ -17,15 +17,17 @@ struct ListGenreView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color(.darkPurple).ignoresSafeArea()
-            
-            VStack {
-                headerSection
-                mainContentSection
+        NavigationStack{
+            ZStack {
+                Color(.darkPurple).ignoresSafeArea()
+                
+                VStack {
+                    headerSection
+                    mainContentSection
+                }
             }
+            .tint(.lightPurple)
         }
-        .tint(.lightPurple)
     }
 }
 
@@ -93,8 +95,10 @@ private extension ListGenreView {
         ScrollView(showsIndicators: false) {
             LazyVStack(spacing: 16) {
                 ForEach(viewModel.artists, id: \.id) { artist in
-                    CardArtistView(artist: artist)
-                        .id(artist.id)
+                    NavigationLink(destination: ArtistDetailsView(viewModel: ArtistDetailsViewModel(artist: artist))) {
+                        CardArtistView(artist: artist)
+                            .id(artist.id)
+                    }
                 }
             }
             .padding(.horizontal, 20)

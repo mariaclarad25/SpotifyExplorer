@@ -28,8 +28,12 @@ private struct BackButton: View {
             presentationMode.wrappedValue.dismiss()
         }) {
             Image(systemName: "chevron.left")
-                .foregroundColor(.lightPurple)
-                .font(.system(size: 18, weight: .medium))
+                .foregroundColor(.white)
+                .padding(8)
+                .background(Color.darkPurple.opacity(0.4))
+                .clipShape(Circle())
+                .shadow(color: .darkPurple.opacity(0.8), radius: 2, x: 0, y: 1)
+                .font(.system(size: 16, weight: .medium))
         }
     }
 }

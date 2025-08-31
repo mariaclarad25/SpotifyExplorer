@@ -13,6 +13,7 @@ class SearchArtistViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var searchResults: [Artist] = []
     @Published var isLoading: Bool = false
+    @Published var isLoadingDiscovery: Bool = true
     @Published var isSearching: Bool = false
     @Published var errorMessage: String?
     @Published var featuredArtists: [Artist] = []
@@ -120,8 +121,8 @@ class SearchArtistViewModel: ObservableObject {
     
     private func loadDiscoveryData() {
         Task {
-            isLoading = true
-            defer { isLoading = false }
+            isLoadingDiscovery = true
+            defer { isLoadingDiscovery = false }
             
             do {
                 let featuredResults = try await SpotifyAPI.shared.searchArtists(query: "pop music")

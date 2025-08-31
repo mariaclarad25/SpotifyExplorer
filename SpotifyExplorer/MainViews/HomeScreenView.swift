@@ -13,7 +13,7 @@ struct HomeScreenView: View {
     @State private var nameOffset: CGFloat = -100
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ZStack{
                 Color(.darkPurple).ignoresSafeArea()
                 

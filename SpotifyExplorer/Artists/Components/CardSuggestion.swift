@@ -68,7 +68,10 @@ private extension CardSuggestion {
             .font(.system(size: 16).bold())
             .foregroundStyle(.darkPurple)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal)
+            .lineLimit(2)
+            .truncationMode(.tail)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading, 16)
     }
     
     var artistPopularity: some View {

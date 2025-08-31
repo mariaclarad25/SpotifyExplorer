@@ -34,7 +34,7 @@ struct SearchArtistView: View {
 private extension SearchArtistView {
     var contentScrollView: some View {
         Group {
-            if viewModel.isLoading && viewModel.searchText.isEmpty {
+            if viewModel.isLoadingDiscovery {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .greenCustom))
                     .scaleEffect(2)
@@ -111,7 +111,7 @@ private extension SearchArtistView {
                 .padding(.top, 10)
             
             ScrollView(.horizontal, showsIndicators: false){
-                HStack{
+                LazyHStack{
                     ForEach(viewModel.featuredArtists, id: \.id) { artist in
                         NavigationLink(destination: ArtistDetailsView(viewModel: ArtistDetailsViewModel(artist: artist))) {
                             CardSuggestion(artist: artist)
@@ -130,7 +130,7 @@ private extension SearchArtistView {
                 .padding(.top, 10)
             
             ScrollView(.horizontal, showsIndicators: false){
-                HStack{
+                LazyHStack{
                     ForEach(viewModel.recommendedArtist, id: \.id) { artist in
                         NavigationLink(destination: ArtistDetailsView(viewModel: ArtistDetailsViewModel(artist: artist))) {
                             CardSuggestion(artist: artist)
