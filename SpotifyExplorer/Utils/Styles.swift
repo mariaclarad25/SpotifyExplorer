@@ -6,6 +6,20 @@
 //
 
 import SwiftUI
+
+struct GradientBackground: View {
+    var body: some View {
+        LinearGradient(
+            colors: [
+                Color(.darkPurple),
+                Color(.mediumDarkPurple),
+                Color(.softDarkPurple)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+}
  
 extension View {
     func styleSubtitlesArtistView() -> some View {

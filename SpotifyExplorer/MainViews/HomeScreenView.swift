@@ -15,7 +15,7 @@ struct HomeScreenView: View {
     var body: some View {
         NavigationStack{
             ZStack{
-                Color(.darkPurple).ignoresSafeArea()
+                AnimatedHomeView()
                 
                 VStack(spacing: 30) {
                     nameSpotifyImage
@@ -60,7 +60,7 @@ private extension HomeScreenView {
     
     var circleShadow: some View {
         Circle()
-            .fill(Color.lightPurple.opacity(0.7))
+            .fill(Color.lightPurple.opacity(0.6))
             .frame(width: 220, height: 220)
             .blur(radius: 50)
     }
