@@ -13,9 +13,7 @@ struct AnimatedHomeView: View {
             GradientBackground()
             
             ParticlesView()
-            
-            ShimmerEffect()
-            
+                        
             MusicBarView()
         }
         .ignoresSafeArea()

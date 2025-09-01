@@ -19,6 +19,7 @@ struct AlbumTrackView: View {
     var body: some View {
         ZStack{
             Color(.darkPurple).ignoresSafeArea()
+            ShimmerEffect()
             
             VStack(spacing: 16) {
                 albumName

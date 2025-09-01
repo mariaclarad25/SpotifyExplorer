@@ -117,6 +117,7 @@
 				B78B4CF72E3CDFBC004DC1F6 /* Styles.swift */,
 				B7132C5B2E5C9DF90050A289 /* ViewNavigation.swift */,
 				B7132C5D2E5C9E400050A289 /* Formatter.swift */,
+				B7B1B9852E65B36800DF9752 /* ShimmerEffect.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -187,7 +188,6 @@
 			children = (
 				B782587B2E63FEB300FB4ABE /* AnimatedHomeView.swift */,
 				B7B1B9832E65B27600DF9752 /* FloatingParticles.swift */,
-				B7B1B9852E65B36800DF9752 /* ShimmerEffect.swift */,
 				B7B1B9872E65B3C100DF9752 /* MusicBar.swift */,
 			);
 			path = Animations;

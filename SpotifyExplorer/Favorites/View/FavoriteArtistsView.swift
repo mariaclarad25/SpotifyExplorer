@@ -14,6 +14,7 @@ struct FavoriteArtists: View {
         NavigationStack{
             ZStack{
                 Color(.darkPurple).ignoresSafeArea()
+                ShimmerEffect()
                 
                 VStack{
                     titleHeader

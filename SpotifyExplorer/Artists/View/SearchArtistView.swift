@@ -16,6 +16,7 @@ struct SearchArtistView: View {
         NavigationStack{
             ZStack{
                 Color(.darkPurple).ignoresSafeArea()
+                ShimmerEffect()
                 
                 contentScrollView
             }

@@ -20,6 +20,7 @@ struct ListGenreView: View {
         NavigationStack{
             ZStack {
                 Color(.darkPurple).ignoresSafeArea()
+                ShimmerEffect()
                 
                 VStack {
                     headerSection
