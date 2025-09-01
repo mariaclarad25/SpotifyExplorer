@@ -59,7 +59,7 @@ private extension CardArtistView {
                     )
             }
             .cancelOnDisappear(true)
-            .cacheOriginalImage()
+            .cacheMemoryOnly()
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 125, height: 120)

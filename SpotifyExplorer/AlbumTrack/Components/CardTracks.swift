@@ -47,7 +47,9 @@ private extension CardTracks {
                     .background(Color.gray.opacity(0.3))
                     .clipShape(RoundedRectangle(cornerRadius: 2))
             }
+            .cancelOnDisappear(true)
             .resizable()
+            .cacheMemoryOnly()
             .aspectRatio(contentMode: .fill)
             .frame(width: 40, height: 40)
             .clipped()
