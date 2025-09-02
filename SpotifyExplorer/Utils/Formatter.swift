@@ -22,3 +22,12 @@ func formatDuration(_ durationMs: Int) -> String {
     let seconds = (durationMs % 60000) / 1000
     return String(format: "%d:%02d", minutes, seconds)
 }
+
+func formatDate(_ releaseDate: String) -> String {
+    let parts = releaseDate.split(separator: "-")
+    if parts.count == 3 {
+        return "\(parts[2])/\(parts[1])/\(parts[0])"
+    }
+    return releaseDate
+}
+

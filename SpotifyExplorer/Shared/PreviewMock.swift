@@ -51,57 +51,57 @@ struct PreviewData {
             id: "1",
             name: "Luan City 2.0",
             images: [SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b2736ac7cb4f62dc68194f72e59a", height: 300, width: 300)],
-            release_date: "2023-03-17",
-            total_tracks: 20,
-            artists: [sampleArtists[0]]
+            artists: [sampleArtists[0]],
+            releaseDate: "2023-03-17",
+            totalTracks: 20
         ),
         Album(
             id: "2",
             name: "Luan City",
             images: [SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b273b4a4a1ff2c213816ae0584c6", height: 300, width: 300)],
-            release_date: "2022-05-13",
-            total_tracks: 19,
-            artists: [sampleArtists[0]]
+            artists: [sampleArtists[0]],
+            releaseDate: "2022-05-13",
+            totalTracks: 19
         ),
         Album(
             id: "3",
             name: "Acústico",
             images: [SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b2732d0f6c3a1a98d1e9f122a2c2", height: 300, width: 300)],
-            release_date: "2015-10-09",
-            total_tracks: 15,
-            artists: [sampleArtists[0]]
+            artists: [sampleArtists[0]],
+            releaseDate: "2015-10-09",
+            totalTracks: 15
         ),
         Album(
             id: "4",
             name: "Dos Prédios Deluxe",
             images: [SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b273a8e8dd195d644af3ee3a5b2d", height: 300, width: 300)],
-            release_date: "2023-06-01",
-            total_tracks: 15,
-            artists: [sampleArtists[1]]
+            artists: [sampleArtists[1]],
+            releaseDate: "2023-06-01",
+            totalTracks: 15
         ),
         Album(
             id: "5",
             name: "Dos Prédios",
             images: [SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b2732dfb4e15a72a9791a4dbb6eb", height: 300, width: 300)],
-                        release_date: "2022-10-10",
-            total_tracks: 12,
-            artists: [sampleArtists[1]]
+            artists: [sampleArtists[1]],
+            releaseDate: "2022-10-10",
+            totalTracks: 12
         ),
         Album(
             id: "6",
             name: "Horizonte Azul",
             images: [SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b273bbbbbbbbbbbbbbbbbbbbbbbb", height: 300, width: 300)],
-                        release_date: "2024-01-15",
-            total_tracks: 8,
-            artists: [sampleArtists[2]]
+            artists: [sampleArtists[2]],
+            releaseDate: "2024-01-15",
+            totalTracks: 8
         ),
         Album(
             id: "7",
             name: "Tempestade",
             images: [SpotifyImage(url: "https://i.scdn.co/image/ab67616d0000b273cccccccccccccccccccccccc", height: 300, width: 300)],
-                        release_date: "2023-06-20",
-            total_tracks: 10,
-            artists: [sampleArtists[2]]
+            artists: [sampleArtists[2]],
+            releaseDate: "2023-06-20",
+            totalTracks: 10
         )
     ]
 

@@ -37,6 +37,5 @@ extension View {
             .foregroundColor(.greenCustom)
             .frame(alignment: .center)
             .padding(.top, 10)
-            .padding(.bottom, 20)
     }
 }

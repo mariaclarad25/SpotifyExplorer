@@ -21,8 +21,9 @@ struct AlbumTrackView: View {
             Color(.darkPurple).ignoresSafeArea()
             ShimmerEffect()
             
-            VStack(spacing: 16) {
-                albumName
+            VStack(spacing: 8) {
+                    albumName
+                    quantityOfTracks
                 
                 if viewModel.tracks.isEmpty {
                     Spacer()
@@ -34,7 +35,6 @@ struct AlbumTrackView: View {
                     trackList
                 }
             }
-            .navigationTitle("Faixas do Álbum")
         }
     }
 }
@@ -44,6 +44,14 @@ private extension AlbumTrackView {
     var albumName: some View {
         Text(album.name)
             .styleTitleSheet()
+    }
+    
+    var quantityOfTracks: some View {
+        let total = album.totalTracks ?? 0
+        return Text("\(total) \(total == 1 ? "faixa" : "faixas") no álbum")
+            .foregroundStyle(.grayLight)
+            .font(.system(size: 16).weight(.semibold))
+            .fontDesign(.rounded)
     }
 }
 
@@ -59,7 +67,7 @@ private extension AlbumTrackView {
             .padding()
         }
     }
-    
+        
     var emptyTrackList: some View {
         VStack(spacing: 16) {
             Image(systemName: "music.note")
@@ -67,13 +75,13 @@ private extension AlbumTrackView {
                 .foregroundColor(.gray)
             
             Text(viewModel.errorMessage ?? "")
-                .foregroundColor(.white)
+                .foregroundColor(.grayLight)
                 .font(.system(size: 18).weight(.semibold))
         }
     }
 }
 
 #Preview {
-    let album = PreviewData.sampleAlbums[0]    
+    let album = PreviewData.sampleAlbums[1]
     return AlbumTrackView(album: album)
 }

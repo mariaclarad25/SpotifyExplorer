@@ -113,7 +113,7 @@ private extension ArtistDetailsView {
     var statDivider: some View {
         Divider()
             .frame(height: 40)
-            .background(Color.white.opacity(0.12))
+            .background(Color.white)
     }
     
     var discographySection: some View {
@@ -131,7 +131,7 @@ private extension ArtistDetailsView {
     
     var albumsScrollView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 20) {
+            LazyHStack(spacing: 6) {
                 ForEach(viewModel.albums) { album in
                     Button(action: {
                         selectedAlbum = album
@@ -140,7 +140,7 @@ private extension ArtistDetailsView {
                 }
             }
         }
-        .frame(height: 230)
+        .frame(height: 280)
         .padding(.vertical, 6)
     }
     
@@ -157,6 +157,7 @@ private extension ArtistDetailsView {
                 }
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     func sectionHeader(_ title: String) -> some View {

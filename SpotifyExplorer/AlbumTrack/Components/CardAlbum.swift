@@ -12,13 +12,17 @@ struct CardAlbum: View {
     let album: Album
     
     var body: some View {
-        VStack{
+        VStack {
             albumImage
             albumName
+            releaseDate
+            Spacer()
         }
         .background(.clear)
         .frame(width: 170)
         .cornerRadius(4)
+        .frame(width: 185, height: 250)
+        .padding(.top, 10)
     }
 }
 
@@ -48,7 +52,15 @@ private extension CardAlbum {
             .foregroundStyle(.white)
             .frame(maxWidth: .infinity, alignment: .leading)
             .font(.system(size: 16).weight(.semibold))
+            .lineLimit(1)
             .padding(.bottom, 1)
+    }
+    
+    var releaseDate: some View {
+        Text("Lançado em: \(formatDate(album.releaseDate ?? ""))")
+            .foregroundStyle(.grayLight)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .font(.system(size: 14).weight(.regular))
     }
 }
 

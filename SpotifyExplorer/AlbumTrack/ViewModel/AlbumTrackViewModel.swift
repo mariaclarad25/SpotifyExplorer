@@ -34,9 +34,12 @@ class AlbumTrackViewModel: ObservableObject {
                     self.tracks = fetchedTracks
                 }
                 
-            } catch {                
+            } catch let spotifyError as SpotifyError {
                 self.tracks = []
-                self.errorMessage = "Erro: \(error.localizedDescription)"
+                self.errorMessage = spotifyError.errorDescription
+            } catch {
+                self.tracks = []
+                self.errorMessage = "\(error.localizedDescription)"
             }
             
             isLoading = false

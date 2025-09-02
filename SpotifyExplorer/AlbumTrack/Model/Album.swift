@@ -11,7 +11,13 @@ struct Album: Identifiable, Codable {
     let id: String
     let name: String
     let images: [SpotifyImage]?
-    let release_date: String?
-    let total_tracks: Int?
     let artists: [Artist]?
+    let releaseDate: String?
+    let totalTracks: Int?
+}
+
+enum CodingKeys: String, CodingKey {
+    case id, name, images, artists
+    case releaseDate = "release_date"
+    case totalTracks = "total_tracks"
 }
