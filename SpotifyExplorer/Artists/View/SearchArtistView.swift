@@ -112,7 +112,7 @@ private extension SearchArtistView {
                 .padding(.top, 10)
             
             ScrollView(.horizontal, showsIndicators: false){
-                LazyHStack{
+                LazyHStack(spacing: 18){
                     ForEach(viewModel.featuredArtists, id: \.id) { artist in
                         NavigationLink(destination: ArtistDetailsView(viewModel: ArtistDetailsViewModel(artist: artist))) {
                             CardSuggestion(artist: artist)
@@ -120,6 +120,7 @@ private extension SearchArtistView {
                     }
                 }
                 .padding(.top, -16)
+                .padding(.horizontal)
             }
         }
     }
@@ -131,7 +132,7 @@ private extension SearchArtistView {
                 .padding(.top, 10)
             
             ScrollView(.horizontal, showsIndicators: false){
-                LazyHStack{
+                LazyHStack(spacing: 18){
                     ForEach(viewModel.recommendedArtist, id: \.id) { artist in
                         NavigationLink(destination: ArtistDetailsView(viewModel: ArtistDetailsViewModel(artist: artist))) {
                             CardSuggestion(artist: artist)
@@ -139,6 +140,7 @@ private extension SearchArtistView {
                     }
                 }
                 .padding(.top, -16)
+                .padding(.horizontal)
             }
         }
     }

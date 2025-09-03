@@ -37,7 +37,7 @@ struct CardSuggestion: View {
             startPoint: .topLeading,
             endPoint: .bottomTrailing))
         .cornerRadius(8)
-        .padding()
+        .padding(.vertical)
     }
 }
 

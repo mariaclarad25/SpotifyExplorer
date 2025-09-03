@@ -11,7 +11,7 @@
 		B70BD0572E4E69CD008B4307 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70BD0562E4E69CD008B4307 /* TokenManager.swift */; };
 		B7132C5A2E5C9D520050A289 /* TabBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7132C592E5C9D520050A289 /* TabBarAppearance.swift */; };
 		B7132C5C2E5C9DF90050A289 /* ViewNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7132C5B2E5C9DF90050A289 /* ViewNavigation.swift */; };
-		B7132C5E2E5C9E400050A289 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7132C5D2E5C9E400050A289 /* Formatter.swift */; };
+		B7132C5E2E5C9E400050A289 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7132C5D2E5C9E400050A289 /* GlobalFunctions.swift */; };
 		B73DED9E2E608CD800C04D97 /* PreviewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DED9D2E608CD800C04D97 /* PreviewMock.swift */; };
 		B75EA0352E40FF6800019E97 /* ListGenreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75EA0342E40FF6800019E97 /* ListGenreView.swift */; };
 		B7706DFD2E38FE3D00D0E04C /* SearchArtistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7706DFC2E38FE3D00D0E04C /* SearchArtistView.swift */; };
@@ -57,7 +57,7 @@
 		B70BD0562E4E69CD008B4307 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		B7132C592E5C9D520050A289 /* TabBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAppearance.swift; sourceTree = "<group>"; };
 		B7132C5B2E5C9DF90050A289 /* ViewNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNavigation.swift; sourceTree = "<group>"; };
-		B7132C5D2E5C9E400050A289 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		B7132C5D2E5C9E400050A289 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		B73DED9D2E608CD800C04D97 /* PreviewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMock.swift; sourceTree = "<group>"; };
 		B75EA0342E40FF6800019E97 /* ListGenreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListGenreView.swift; sourceTree = "<group>"; };
 		B7706DFC2E38FE3D00D0E04C /* SearchArtistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArtistView.swift; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 				B7132C592E5C9D520050A289 /* TabBarAppearance.swift */,
 				B78B4CF72E3CDFBC004DC1F6 /* Styles.swift */,
 				B7132C5B2E5C9DF90050A289 /* ViewNavigation.swift */,
-				B7132C5D2E5C9E400050A289 /* Formatter.swift */,
+				B7132C5D2E5C9E400050A289 /* GlobalFunctions.swift */,
 				B7B1B9852E65B36800DF9752 /* ShimmerEffect.swift */,
 			);
 			path = Utils;
@@ -471,7 +471,7 @@
 				B7B851102E42159500C0E9B7 /* GenreArtistsViewModel.swift in Sources */,
 				B7F0D0752E3A5AFC008DB1E7 /* GenreButton.swift in Sources */,
 				B7F0D0732E3A397D008DB1E7 /* CardArtist.swift in Sources */,
-				B7132C5E2E5C9E400050A289 /* Formatter.swift in Sources */,
+				B7132C5E2E5C9E400050A289 /* GlobalFunctions.swift in Sources */,
 				B7DC01CE2E54A6F7008BF457 /* SpotifyTracksAPI.swift in Sources */,
 				B75EA0352E40FF6800019E97 /* ListGenreView.swift in Sources */,
 				B7706DFD2E38FE3D00D0E04C /* SearchArtistView.swift in Sources */,

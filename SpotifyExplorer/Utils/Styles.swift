@@ -38,4 +38,10 @@ extension View {
             .frame(alignment: .center)
             .padding(.top, 10)
     }
+    
+    func styleTitleScreenDatails() -> some View {
+        self
+            .font(.system(size: 24, weight: .semibold))
+            .foregroundColor(.white)
+    }
 }

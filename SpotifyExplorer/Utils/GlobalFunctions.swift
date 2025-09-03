@@ -31,3 +31,6 @@ func formatDate(_ releaseDate: String) -> String {
     return releaseDate
 }
 
+func tracksByPopularity(_ tracks: [Track]) -> [Track] {
+    tracks.sorted { ($0.popularity ?? 0) > ($1.popularity ?? 0) }
+}

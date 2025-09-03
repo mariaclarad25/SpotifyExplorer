@@ -27,21 +27,13 @@ class AlbumTrackViewModel: ObservableObject {
             do {
                 let simpleTracks = try await SpotifyAPI.shared.getAlbumTracks(albumId: album.id)
                 
-                let detailedTracks: [Track] = try await withThrowingTaskGroup(of: Track.self) { group in
-                    for track in simpleTracks {
-                        group.addTask {
-                            try await SpotifyAPI.shared.getTrack(trackId: track.id)
-                        }
-                    }
-                    
-                    var results: [Track] = []
-                    for try await track in group {
-                        results.append(track)
-                    }
-                    return results
-                }
+                let detailedTracks: [Track] = try await fetchTrackDetails(for: simpleTracks)
                 
-                self.tracks = detailedTracks.sorted { $0.name < $1.name }
+                self.tracks = tracksByPopularity(detailedTracks)
+                
+                if self.tracks.isEmpty {
+                    self.errorMessage = "Este álbum não possui faixas disponíveis."
+                }
                 
             } catch {
                 self.tracks = []
@@ -49,6 +41,22 @@ class AlbumTrackViewModel: ObservableObject {
             }
             
             isLoading = false
+        }
+    }
+    
+    private func fetchTrackDetails(for tracks: [Track]) async throws -> [Track] {
+        try await withThrowingTaskGroup(of: Track.self) { group in
+            for track in tracks {
+                group.addTask {
+                    try await SpotifyAPI.shared.getTrack(trackId: track.id)
+                }
+            }
+            
+            var results: [Track] = []
+            for try await track in group {
+                results.append(track)
+            }
+            return results
         }
     }
 }

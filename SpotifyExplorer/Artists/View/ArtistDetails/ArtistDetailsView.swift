@@ -118,7 +118,8 @@ private extension ArtistDetailsView {
     
     var discographySection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            sectionHeader("Discografia")
+            Text("Discografia")
+                .styleTitleScreenDatails()
             
             if viewModel.albums.isEmpty {
                 Text("Nenhum álbum disponivel")
@@ -146,7 +147,8 @@ private extension ArtistDetailsView {
     
     var topTracksSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            sectionHeader("Top faixas")
+            Text("Top faixas")
+                .styleTitleScreenDatails()
                
             if viewModel.topTracks.isEmpty {
                 Text("Nenhuma faixa disponível")
@@ -159,12 +161,6 @@ private extension ArtistDetailsView {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
-    
-    func sectionHeader(_ title: String) -> some View {
-           Text(title)
-               .font(.system(size: 24, weight: .semibold))
-               .foregroundColor(.white)
-       }
 }
 
 // MARK: - Suporting View

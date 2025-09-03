@@ -19,6 +19,7 @@ struct CardTracks: View {
             
             Spacer()
             
+            musicPopularity
             linkSpotifyButton
             musicDuration
         }
@@ -63,6 +64,18 @@ private extension CardTracks {
             .lineLimit(1)
             .truncationMode(.tail)
             .padding(.leading, 10)
+    }
+    
+    var musicPopularity: some View {
+        HStack(spacing: 4) {
+            Image(systemName: "star.fill")
+                .font(.caption)
+                .foregroundColor(.lightPurple)
+            
+            Text("\(track.popularity ?? 0)")
+                .font(.caption)
+                .foregroundColor(.grayLight)
+        }
     }
     
     var linkSpotifyButton: some View {

@@ -28,12 +28,12 @@ final class ArtistDetailsViewModel: ObservableObject {
             errorMessage = nil
             
             do {
-                async let tracksResult = SpotifyAPI.shared.getArtistTopTracks(artistId: artist.id)
-                async let albumsResult = SpotifyAPI.shared.getArtistAlbums(artistId: artist.id)
+                let fetchedTracks = try await fetchTopTracks()
                 
-                let fetchedTracks = try await tracksResult
-                self.topTracks = Array(fetchedTracks.sorted { $0.popularity ?? 0 > $1.popularity ?? 0 }.prefix(10))
-                self.albums = try await albumsResult
+                self.topTracks = tracksByPopularity(fetchedTracks)
+                
+                self.albums = try await SpotifyAPI.shared.getArtistAlbums(artistId: artist.id)
+                
                 
             } catch let spotifyError as SpotifyError {
                 self.errorMessage = "Falha ao carregar dados: \(spotifyError.errorDescription ?? "Erro desconhecido")"
@@ -43,5 +43,25 @@ final class ArtistDetailsViewModel: ObservableObject {
             
             isLoading = false
         }
+    }
+    
+    private func fetchTopTracks()  async throws -> [Track] {
+        let fetchedTracks = try await SpotifyAPI.shared.getArtistTopTracks(artistId: artist.id)
+        
+        let detailedTracks: [Track] = try await withThrowingTaskGroup(of: Track.self) { group in
+            for track in fetchedTracks {
+                group.addTask {
+                    try await SpotifyAPI.shared.getTrack(trackId: track.id)
+                }
+            }
+            
+            var results: [Track] = []
+            for try await track in group {
+                results.append(track)
+            }
+            return results
+        }
+        
+        return detailedTracks
     }
 }
