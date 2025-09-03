@@ -18,19 +18,22 @@ struct CardFavorites: View {
             artistImage
             artistName
             
-            FavoriteButton(artist: artist, favoritesViewModel: favoritesViewModel, color: .lightPurple)
+            FavoriteButton(artist: artist,
+                           favoritesViewModel: favoritesViewModel,
+                           color: .lightPurple,
+                           iconSize: 20)
                 .padding(.bottom, 10)
             
         }
         .padding()
-        .background(.purpleHighlight)
-        .frame(width: 140, height: 210)
+        .background(Color.purpleHighlight.opacity(0.4))
+        .frame(width: 152, height: 225)
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Color.lightPurple, lineWidth: 2)
         )
-        .shadow(color: Color.lightPurple.opacity(0.8), radius: 2, x: 0, y: 0)
+        .shadow(color: Color.lightPurple.opacity(0.3), radius: 2, x: 0, y: 0)
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
@@ -45,7 +48,7 @@ private extension CardFavorites {
                     .fill(Color.gray.opacity(0.3))
                     .overlay(
                         Image(systemName: "person.fill")
-                            .foregroundColor(.gray)
+                            .foregroundColor(.grayLight)
                             .font(.title)
                     )
             }
@@ -53,7 +56,7 @@ private extension CardFavorites {
             .cacheMemoryOnly()
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(width: 125, height: 135)
+            .frame(width: 135, height: 145)
             .cornerRadius(8)
     }
     
@@ -65,6 +68,11 @@ private extension CardFavorites {
 }
 
 #Preview {
-    CardFavorites(artist: PreviewData.sampleArtists[0])
-        .environmentObject(FavoritesViewModel())
+    ZStack{
+        Color.darkPurple
+            .ignoresSafeArea()
+        
+        CardFavorites(artist: PreviewData.sampleArtists[2])
+            .environmentObject(FavoritesViewModel())
+    }
 }

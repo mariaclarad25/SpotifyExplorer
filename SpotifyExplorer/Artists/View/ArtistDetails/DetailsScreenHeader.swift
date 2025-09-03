@@ -79,7 +79,7 @@ private extension DetailsScreenHeader {
             FavoriteButton(artist: artist,
                            favoritesViewModel: favoritesViewModel,
                            color: .white,
-                           iconSize: 22)
+                           iconSize: 28)
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 18)
@@ -112,6 +112,6 @@ private extension DetailsScreenHeader {
 }
 
 #Preview {
-    DetailsScreenHeader(artist: PreviewData.sampleArtists[0])
+    DetailsScreenHeader(artist: PreviewData.sampleArtists[1])
         .environmentObject(FavoritesViewModel())
 }

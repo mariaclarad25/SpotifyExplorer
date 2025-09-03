@@ -19,9 +19,12 @@ struct FavoriteArtists: View {
                 VStack{
                     titleHeader
                     
+                    Spacer()
+                    
                     if favoritesViewModel.favoriteArtists.isEmpty {
                         favoritesEmpty
-                    } else {
+                    }
+                    else {
                         favoriteArtistsGrid
                     }
                     Spacer()
@@ -41,6 +44,7 @@ private extension FavoriteArtists {
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundStyle(.grayLight)
             .padding(.horizontal)
+            .padding(.bottom, 15)
         
     }
     
@@ -66,9 +70,29 @@ private extension FavoriteArtists {
 // MARK: - States
 private extension FavoriteArtists {
     var favoritesEmpty: some View {
-        Text("Nenhum artista favoritado.")
-            .foregroundStyle(Color(.grayMedium))
-            .padding()
+        VStack(spacing: 20) {
+            ZStack{
+                Circle()
+                    .fill(.lightPurple.opacity(0.2))
+                    .blur(radius: 12)
+                    .frame(width: 200, height: 200)
+                
+                NavigationLink(destination: TabBarView()) {
+                    Text("🤍")
+                        .font(.system(size: 65))
+                }
+            }
+            
+            Text("Nenhum favoritado.")
+                .foregroundStyle(Color(.grayMedium))
+                .font(.system(size: 20, weight: .semibold))
+            
+            Text("Explore artistas e adicione nos seus favoritos tocando no 🤍")
+                .foregroundStyle(Color(.grayLight))
+                .font(.system(size: 20))
+                .multilineTextAlignment(.center)
+                .frame(width: 380)
+        }
     }
 }
 

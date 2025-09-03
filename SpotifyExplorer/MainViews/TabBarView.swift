@@ -22,7 +22,7 @@ struct TabBarView: View {
                     Text("Favoritos")
                 }
         }
-        .tint(Color(.lightPurple))
+        .tint(Color(.grayLight))
         .navigationBarBackButtonHidden(true)
         .onAppear(
             perform: {configureTabBarAppearance()

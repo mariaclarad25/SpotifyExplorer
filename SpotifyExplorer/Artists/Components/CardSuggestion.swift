@@ -23,7 +23,10 @@ struct CardSuggestion: View {
                     artistPopularity
                 }
                 
-                FavoriteButton(artist: artist, favoritesViewModel: favoritesViewModel, color: .darkPurple)
+                FavoriteButton(artist: artist,
+                               favoritesViewModel: favoritesViewModel,
+                               color: .darkPurple,
+                               iconSize: 20)
                     .padding()
             }
             Spacer()
