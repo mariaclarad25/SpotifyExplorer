@@ -16,7 +16,6 @@ extension SpotifyAPI {
         
         let data = try await performRequest(url: url)
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
         return try decoder.decode(Track.self, from: data)
     }
     
@@ -28,7 +27,6 @@ extension SpotifyAPI {
         let data = try await performRequest(url: url)
         struct AlbumTracksResponse: Codable { let items: [Track] }
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
         let result = try decoder.decode(AlbumTracksResponse.self, from: data)
         return result.items
     }

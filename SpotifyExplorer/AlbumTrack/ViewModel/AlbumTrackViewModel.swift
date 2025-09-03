@@ -25,18 +25,24 @@ class AlbumTrackViewModel: ObservableObject {
             errorMessage = nil
             
             do {
-                let fetchedTracks = try await SpotifyAPI.shared.getAlbumTracks(albumId: album.id)
+                let simpleTracks = try await SpotifyAPI.shared.getAlbumTracks(albumId: album.id)
                 
-                if fetchedTracks.isEmpty {
-                    self.tracks = []
-                    self.errorMessage = "Este álbum não possui faixas disponíveis."
-                } else {
-                    self.tracks = fetchedTracks
+                let detailedTracks: [Track] = try await withThrowingTaskGroup(of: Track.self) { group in
+                    for track in simpleTracks {
+                        group.addTask {
+                            try await SpotifyAPI.shared.getTrack(trackId: track.id)
+                        }
+                    }
+                    
+                    var results: [Track] = []
+                    for try await track in group {
+                        results.append(track)
+                    }
+                    return results
                 }
                 
-            } catch let spotifyError as SpotifyError {
-                self.tracks = []
-                self.errorMessage = spotifyError.errorDescription
+                self.tracks = detailedTracks.sorted { $0.name < $1.name }
+                
             } catch {
                 self.tracks = []
                 self.errorMessage = "\(error.localizedDescription)"
