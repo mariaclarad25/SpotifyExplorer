@@ -38,8 +38,7 @@ struct ArtistDetailsView: View {
     private var content: some View {
         if viewModel.isLoading {
             ProgressView()
-                .scaleEffect(1.5)
-                .tint(.greenCustom)
+                .styleProgressView()
                 .padding(.bottom, 20)
         } else if let errorMessage = viewModel.errorMessage {
             VStack {

@@ -21,18 +21,22 @@ struct AlbumTrackView: View {
             Color(.darkPurple).ignoresSafeArea()
             ShimmerEffect()
             
-            VStack(spacing: 8) {
+            if viewModel.isLoading{
+                progressView
+            } else {
+                VStack(spacing: 8) {
                     albumName
                     quantityOfTracks
-                
-                if viewModel.tracks.isEmpty {
-                    Spacer()
                     
-                    emptyTrackList
-                    
-                    Spacer()
-                } else {
-                    trackList
+                    if viewModel.tracks.isEmpty {
+                        Spacer()
+                        
+                        emptyTrackList
+                        
+                        Spacer()
+                    } else {
+                        trackList
+                    }
                 }
             }
         }
@@ -58,7 +62,7 @@ private extension AlbumTrackView {
 // MARK: - States
 private extension AlbumTrackView {
     var trackList: some View { 
-        ScrollView{
+        ScrollView(showsIndicators: false) {
             VStack(spacing: 6) {
                 ForEach(viewModel.tracks) { track in
                     CardTracks(track: track)
@@ -78,6 +82,11 @@ private extension AlbumTrackView {
                 .foregroundColor(.grayLight)
                 .font(.system(size: 18).weight(.semibold))
         }
+    }
+    
+    var progressView: some View {
+        ProgressView()
+            .styleProgressView()
     }
 }
 

@@ -33,7 +33,7 @@ private extension DetailsScreenHeader {
         GeometryReader { geo in
             KFImage(URL(string: artist.images?.first?.url ?? ""))
                 .placeholder {
-                    loadingPlaceholder
+                    emptyImagePlaceholder
                 }
                 .cancelOnDisappear(true)
                 .cacheOriginalImage()
@@ -96,19 +96,17 @@ private extension DetailsScreenHeader {
 
 // MARK: - States
 private extension DetailsScreenHeader {
-    var loadingPlaceholder: some View {
+    var emptyImagePlaceholder: some View {
         ZStack {
             Color(.darkPurple)
-            ProgressView()
+            
+            Image(systemName: "photo")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 50, height: 50)
+                .foregroundColor(.grayLight.opacity(0.8))
         }
     }
-    
-    var errorPlaceholder: some View {
-        Image(systemName: "photo")
-            .resizable()
-            .scaledToFill()
-            .frame(width: 50, height: 50)
-        .foregroundColor(.gray)    }
 }
 
 #Preview {

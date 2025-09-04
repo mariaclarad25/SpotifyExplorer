@@ -59,8 +59,7 @@ private extension ListGenreView {
             Spacer()
             VStack {
                 ProgressView()
-                    .scaleEffect(1.5)
-                    .tint(.greenCustom)
+                    .styleProgressView()
                     .padding(.bottom, 20)
                 
                 Text("Carregando artistas...")

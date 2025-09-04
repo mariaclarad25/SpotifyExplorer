@@ -10,7 +10,7 @@ import SwiftUI
 struct ParticlesView: View {
     @State private var particles: [ParticleModel] = []
     
-    private let particleCount = 15
+    private let particleCount = 20
     private let sizeRange = 3.0...8.0
     private let durationRange = 3.0...6.0
     

@@ -58,7 +58,7 @@ class SearchArtistViewModel: ObservableObject {
                 
                 if text.isEmpty {
                     self.resetSearch()
-                } else if text.count >= 2 {
+                } else if !text.isEmpty {
                     self.performSearch(query: text)
                 } else {
                     self.isLoading = false
@@ -126,7 +126,7 @@ class SearchArtistViewModel: ObservableObject {
             
             do {
                 let featuredResults = try await SpotifyAPI.shared.searchArtists(query: "pop music")
-                self.featuredArtists = featuredResults.filter { ($0.popularity ?? 0) >= 70 }
+                self.featuredArtists = featuredResults.filter { ($0.popularity ?? 0) >= 72 }
                 
                 let recommendedTalentsResults = try await SpotifyAPI.shared.searchArtists(query: "pop music")
                 self.recommendedArtist = recommendedTalentsResults.filter { ($0.popularity ?? 0) > 30 && ($0.popularity ?? 0) < 70 }

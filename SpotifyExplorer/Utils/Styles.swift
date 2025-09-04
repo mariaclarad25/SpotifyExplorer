@@ -20,7 +20,7 @@ struct GradientBackground: View {
         )
     }
 }
- 
+
 extension View {
     func styleSubtitlesArtistView() -> some View {
         self
@@ -43,5 +43,14 @@ extension View {
         self
             .font(.system(size: 24, weight: .semibold))
             .foregroundColor(.white)
+    }
+    
+    func styleProgressView(
+        color: Color = .greenCustom,
+        scale: CGFloat = 1.2
+    ) -> some View {
+        self
+            .tint(color)
+            .scaleEffect(scale)
     }
 }

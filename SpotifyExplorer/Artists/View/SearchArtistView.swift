@@ -37,11 +37,10 @@ private extension SearchArtistView {
         Group {
             if viewModel.isLoadingDiscovery {
                 ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .greenCustom))
-                    .scaleEffect(2)
+                    .styleProgressView(scale: 2)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack {
                         headerSection
                         searchBarSection
@@ -77,12 +76,16 @@ private extension SearchArtistView {
                 TextField("", text: $viewModel.searchText)
                     .foregroundColor(.black)
                     .focused($searchFieldIsFocused)
+                    .onChange(of: viewModel.searchText) { oldValue, newValue in
+                        if newValue.isEmpty {
+                            searchFieldIsFocused = false
+                        }
+                    }
             }
             
             if viewModel.isLoading && viewModel.showingSearchResults {
                 ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .gray))
-                    .scaleEffect(0.8)
+                    .styleProgressView(color: .gray ,scale: 0.8)
             } else {
                 Image(systemName: "magnifyingglass")
                     .foregroundStyle(Color(.gray))
@@ -180,8 +183,7 @@ private extension SearchArtistView {
             if viewModel.isLoading {
                 HStack {
                     ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .greenCustom))
-                        .scaleEffect(0.8)
+                        .styleProgressView()
                     Text("Buscando...")
                         .foregroundColor(.white)
                 }
