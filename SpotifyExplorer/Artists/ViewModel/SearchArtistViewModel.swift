@@ -22,7 +22,6 @@ class SearchArtistViewModel: ObservableObject {
     @Published var showingSearchResults: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
-    private var artistCache: [String: [Artist]] = [:]
     var searchTask: Task<Void, Never>?
     
     private var normalizedSearchText: String {
@@ -83,13 +82,6 @@ class SearchArtistViewModel: ObservableObject {
         
         searchTask?.cancel()
         
-        if let cachedResults = artistCache[searchQuery] {
-            self.searchResults = cachedResults
-            self.isLoading = false
-            self.errorMessage = cachedResults.isEmpty ? "Nenhum resultado encontrado" : nil
-            return
-        }
-        
         self.isLoading = true
         self.errorMessage = nil
         
@@ -102,7 +94,6 @@ class SearchArtistViewModel: ObservableObject {
                 guard !Task.isCancelled else { return }
                 
                 self.searchResults = results
-                self.artistCache[searchQuery] = results
                 self.isLoading = false
                 
                 if results.isEmpty {
@@ -150,9 +141,5 @@ class SearchArtistViewModel: ObservableObject {
                 print("Erro ao carregar dados de descoberta: \(error)")
             }
         }
-    }
-    
-    func clearCache() {
-        artistCache.removeAll()
     }
 }
