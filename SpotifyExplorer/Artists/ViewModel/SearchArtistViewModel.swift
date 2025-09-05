@@ -115,11 +115,13 @@ class SearchArtistViewModel: ObservableObject {
             isLoadingDiscovery = true
             defer { isLoadingDiscovery = false }
             
+            let searchTerm = "pop music"
+            
             do {
-                let featuredResults = try await SpotifyAPI.shared.searchArtists(query: "pop music")
+                let featuredResults = try await SpotifyAPI.shared.searchArtists(query: searchTerm)
                 self.featuredArtists = featuredResults.filter { ($0.popularity ?? 0) >= 72 }
                 
-                let recommendedTalentsResults = try await SpotifyAPI.shared.searchArtists(query: "pop music")
+                let recommendedTalentsResults = try await SpotifyAPI.shared.searchArtists(query: searchTerm)
                 self.recommendedArtist = recommendedTalentsResults.filter { ($0.popularity ?? 0) > 30 && ($0.popularity ?? 0) < 70 }
                 
                 if self.recommendedArtist.count < 8 {

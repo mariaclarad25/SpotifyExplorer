@@ -11,8 +11,8 @@ class SpotifyTokenManager {
     static let shared = SpotifyTokenManager()  
     private init() {}
     
-    @Published private(set) var accessToken: String?
-    @Published private(set) var isAuthenticated = false
+    private(set) var accessToken: String?
+    private(set) var isAuthenticated = false
     
     private var expirationDate: Date?
     private var tokenTask: Task<String, Error>?
