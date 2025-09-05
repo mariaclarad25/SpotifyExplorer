@@ -10,6 +10,10 @@ import Foundation
 class FavoritesViewModel: ObservableObject {
     @Published var favoriteArtists: [Artist] = []
     
+    var favoriteCount: Int {
+           favoriteArtists.count
+       }
+    
     func toggleFavorite(for artist: Artist) {
         if favoriteArtists.contains(where: { $0.id == artist.id }) {
             favoriteArtists.removeAll { $0.id == artist.id }

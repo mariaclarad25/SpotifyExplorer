@@ -25,6 +25,7 @@ struct FavoriteArtists: View {
                         favoritesEmpty
                     }
                     else {
+                        countFavorites
                         favoriteArtistsGrid
                     }
                     Spacer()
@@ -44,7 +45,6 @@ private extension FavoriteArtists {
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundStyle(.grayLight)
             .padding(.horizontal)
-            .padding(.bottom, 15)
         
     }
     
@@ -65,6 +65,15 @@ private extension FavoriteArtists {
             .padding(.bottom, 30)
         }
     }
+    
+    var countFavorites: some View {
+        Text("\(favoritesViewModel.favoriteArtists.count) \(favoritesViewModel.favoriteArtists.count == 1 ? "artista favoritado" : "artistas favoritados")")
+            .foregroundStyle(Color(.grayLight))
+            .font(.system(size: 16))
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
+            .padding(.bottom, 15)
+    }
 }
 
 // MARK: - States
@@ -77,10 +86,8 @@ private extension FavoriteArtists {
                     .blur(radius: 12)
                     .frame(width: 200, height: 200)
                 
-                NavigationLink(destination: TabBarView()) {
                     Text("🤍")
                         .font(.system(size: 65))
-                }
             }
             
             Text("Nenhum favoritado.")
