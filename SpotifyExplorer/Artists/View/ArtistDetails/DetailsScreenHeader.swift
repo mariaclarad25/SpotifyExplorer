@@ -36,8 +36,10 @@ private extension DetailsScreenHeader {
                     emptyImagePlaceholder
                 }
                 .cancelOnDisappear(true)
-                .cacheOriginalImage()
                 .onFailure { _ in }
+                .downsampling(size: CGSize(width: Int(geo.size.width), height: 470))
+                .scaleFactor(UIScreen.main.scale)
+                .fade(duration: 0.25)
                 .resizable()
                 .scaledToFill()
                 .frame(width: geo.size.width, height: 470)

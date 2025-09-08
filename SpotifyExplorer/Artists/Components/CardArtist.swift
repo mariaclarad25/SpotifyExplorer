@@ -31,8 +31,8 @@ struct CardArtistView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding()
-        .frame(width: 360, height: 150)
+        .padding(12)
+        .frame(width: 360, height: 152)
         .background(Color(.black).opacity(0.1))
         .cornerRadius(12)
         .overlay(
@@ -59,12 +59,15 @@ private extension CardArtistView {
                     )
             }
             .cancelOnDisappear(true)
-            .cacheMemoryOnly()
+            .downsampling(size: CGSize(width: 125, height: 120))
+            .scaleFactor(UIScreen.main.scale)
+            .fade(duration: 0.25)
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(width: 125, height: 120)
-            .cornerRadius(8)
+            .frame(width: 130, height: 128)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
             .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
+            .padding(.trailing, 12)
     }
     
     var artistName: some View {

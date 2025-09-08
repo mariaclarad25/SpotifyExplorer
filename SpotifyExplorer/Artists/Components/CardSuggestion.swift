@@ -27,7 +27,7 @@ struct CardSuggestion: View {
                                favoritesViewModel: favoritesViewModel,
                                color: .darkPurple,
                                iconSize: 20)
-                    .padding()
+                .padding()
             }
             Spacer()
         }
@@ -56,13 +56,13 @@ private extension CardSuggestion {
                     )
             }
             .cancelOnDisappear(true)
-            .cacheOriginalImage()
+            .downsampling(size: CGSize(width: 180, height: 180))
+            .scaleFactor(UIScreen.main.scale)
+            .fade(duration: 0.25)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 180, height: 180)
-            .fixedSize()
-            .cornerRadius(8)
-            .clipped()
+            .clipShape(RoundedRectangle(cornerRadius: 8))
             .padding(.top, 10)
     }
     

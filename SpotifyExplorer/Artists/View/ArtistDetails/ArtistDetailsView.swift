@@ -131,7 +131,7 @@ private extension ArtistDetailsView {
     
     var albumsScrollView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 6) {
+            LazyHStack(spacing: 12) {
                 ForEach(viewModel.albums) { album in
                     Button(action: {
                         selectedAlbum = album

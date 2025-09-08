@@ -154,8 +154,8 @@ private extension SearchArtistView {
                 .styleSubtitlesArtistView()
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing:18) {
-                    ForEach(["Trap", "Pop", "Sertanejo", "Hip-Hop", "Pagode"], id: \.self) { genre in
+                HStack(spacing:10) {
+                    ForEach(["Trap", "Pop", "Sertanejo", "Mpb", "Funk", "Hip-Hop", "Pagode", "Rock"], id: \.self) { genre in
                         GenreButton(genre: genre) {
                             selectedGenre = IdentifiableString(value: genre)
                         }

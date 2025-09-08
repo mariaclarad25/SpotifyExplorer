@@ -22,12 +22,12 @@ struct CardFavorites: View {
                            favoritesViewModel: favoritesViewModel,
                            color: .lightPurple,
                            iconSize: 20)
-                .padding(.bottom, 10)
+            .padding(.bottom, 10)
             
         }
         .padding()
         .background(Color.purpleHighlight.opacity(0.4))
-        .frame(width: 152, height: 225)
+        .frame(width: 162, height: 225)
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
@@ -53,16 +53,19 @@ private extension CardFavorites {
                     )
             }
             .cancelOnDisappear(true)
-            .cacheMemoryOnly()
+            .downsampling(size: CGSize(width: 145, height: 145))
+            .scaleFactor(UIScreen.main.scale)
+            .fade(duration: 0.25)
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(width: 135, height: 145)
-            .cornerRadius(8)
+            .frame(width: 145, height: 145)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
     }
     
     var artistName: some View {
         Text("\(artist.name)")
             .foregroundStyle(.grayLight)
+            .font(.system(size: 18, weight: .medium))
             .padding(.bottom, 4)
     }
 }

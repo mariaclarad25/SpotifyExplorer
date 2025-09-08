@@ -19,9 +19,8 @@ struct CardAlbum: View {
             Spacer()
         }
         .background(.clear)
-        .frame(width: 170)
+        .frame(width: 170, height: 250)
         .cornerRadius(4)
-        .frame(width: 185, height: 250)
         .padding(.top, 10)
     }
 }
@@ -40,11 +39,13 @@ private extension CardAlbum {
                     )
             }
             .cancelOnDisappear(true)
-            .cacheOriginalImage()
+            .downsampling(size: CGSize(width: 170, height: 170))
+            .scaleFactor(UIScreen.main.scale)
+            .fade(duration: 0.25)
             .resizable()
             .scaledToFill()
             .frame(width: 170, height: 170)
-            .cornerRadius(4)
+            .clipShape(RoundedRectangle(cornerRadius: 4))
     }
     
     var albumName: some View {

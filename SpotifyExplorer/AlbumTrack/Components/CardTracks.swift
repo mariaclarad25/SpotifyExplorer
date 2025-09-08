@@ -49,8 +49,10 @@ private extension CardTracks {
                     .clipShape(RoundedRectangle(cornerRadius: 2))
             }
             .cancelOnDisappear(true)
+            .downsampling(size: CGSize(width: 40, height: 40))
+            .scaleFactor(UIScreen.main.scale)
+            .fade(duration: 0.25)
             .resizable()
-            .cacheMemoryOnly()
             .aspectRatio(contentMode: .fill)
             .frame(width: 40, height: 40)
             .clipped()
