@@ -14,7 +14,6 @@ class SearchArtistViewModel: ObservableObject {
     @Published var searchResults: [Artist] = []
     @Published var isLoading: Bool = false
     @Published var isLoadingDiscovery: Bool = true
-    @Published var isSearching: Bool = false
     @Published var errorMessage: String?
     @Published var featuredArtists: [Artist] = []
     @Published var recommendedArtist: [Artist] = []
@@ -33,36 +32,19 @@ class SearchArtistViewModel: ObservableObject {
         loadDiscoveryData()
     }
     
+    // MARK: - Search
     private func setupSearchBinding() {
         $searchText
+            .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
+            .removeDuplicates()
             .sink { [weak self] text in
-                guard let self = self else { return }
+                guard let self else { return }
                 
                 if text.isEmpty {
                     self.resetSearch()
                 } else {
                     self.showingSearchResults = true
-                    if text.count >= 2 && !self.isLoading {
-                        self.isLoading = true
-                    }
-                }
-            }
-            .store(in: &cancellables)
-        
-        $searchText
-            .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
-            .removeDuplicates()
-            .sink { [weak self] text in
-                guard let self = self else { return }
-                
-                if text.isEmpty {
-                    self.resetSearch()
-                } else if !text.isEmpty {
-                    self.performSearch(query: text)
-                } else {
-                    self.isLoading = false
-                    self.searchResults = []
-                    self.didPerformSearch = true
+                    self.performSearch(query: self.normalizedSearchText)
                 }
             }
             .store(in: &cancellables)
@@ -78,23 +60,23 @@ class SearchArtistViewModel: ObservableObject {
     }
     
     private func performSearch(query: String) {
-        let searchQuery = query.trimmingCharacters(in: .whitespaces).lowercased()
-        
         searchTask?.cancel()
-        
-        self.isLoading = true
-        self.errorMessage = nil
+        isLoading = true
+        errorMessage = nil
         
         searchTask = Task {
+            isLoading = true
+            defer { self.isLoading = false }
+            
             do {
                 guard !Task.isCancelled else { return }
                 
-                let results = try await SpotifyAPI.shared.searchArtists(query: searchQuery)
+                let results = try await SpotifyAPI.shared.searchArtists(query: query)
                 
                 guard !Task.isCancelled else { return }
                 
                 self.searchResults = results
-                self.isLoading = false
+                self.didPerformSearch = false
                 
                 if results.isEmpty {
                     self.errorMessage = "Nenhum resultado encontrado"
@@ -102,46 +84,39 @@ class SearchArtistViewModel: ObservableObject {
                 
             } catch {
                 guard !Task.isCancelled else { return }
-                
                 self.searchResults = []
                 self.errorMessage = "Erro na busca"
-                self.isLoading = false
             }
         }
     }
     
+    // MARK: - Discovery
     private func loadDiscoveryData() {
         Task {
             isLoadingDiscovery = true
             defer { isLoadingDiscovery = false }
             
-            let searchTerm = "pop music"
-            
             do {
-                let featuredResults = try await SpotifyAPI.shared.searchArtists(query: searchTerm)
-                self.featuredArtists = featuredResults.filter { ($0.popularity ?? 0) >= 72 }
+                let searchTerm = "pop music"
+                let results = try await SpotifyAPI.shared.searchArtists(query: searchTerm)
                 
-                let recommendedTalentsResults = try await SpotifyAPI.shared.searchArtists(query: searchTerm)
-                self.recommendedArtist = recommendedTalentsResults.filter { ($0.popularity ?? 0) > 30 && ($0.popularity ?? 0) < 70 }
+                self.featuredArtists = results.filter(Self.isFeatured)
+                self.recommendedArtist = results.filter(Self.isRecommended)
                 
-                if self.recommendedArtist.count < 8 {
-                    let alternativeQueries = ["new music", "emerging artists", "fresh pop", "rising artists"]
-                    
-                    for query in alternativeQueries {
-                        let alternativeResults = try await SpotifyAPI.shared.searchArtists(query: query)
-                        let additionalTalents = alternativeResults.filter {
-                            ($0.popularity ?? 0) > 44 && ($0.popularity ?? 0) < 70
-                        }
-                        self.recommendedArtist.append(contentsOf: additionalTalents)
-                        
-                        if self.recommendedArtist.count >= 10 {
-                            break
-                        }
-                    }
-                }
             } catch {
                 print("Erro ao carregar dados de descoberta: \(error)")
             }
         }
+    }
+    
+    // MARK: - Filtering helpers
+    private nonisolated static func isFeatured(_ artist: Artist) -> Bool {
+        let popularity = artist.popularity ?? 0
+        return popularity >= 72
+    }
+
+    private nonisolated static func isRecommended(_ artist: Artist) -> Bool {
+        let popularity = artist.popularity ?? 0
+        return popularity > 35 && popularity < 70
     }
 }
