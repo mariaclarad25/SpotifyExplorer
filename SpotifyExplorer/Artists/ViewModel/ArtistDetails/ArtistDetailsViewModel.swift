@@ -31,19 +31,9 @@ final class ArtistDetailsViewModel: ObservableObject {
                 async let fetchedAlbums = SpotifyAPI.shared.getArtistAlbums(artistId: artist.id)
                 let fetchedTopTracks = try await SpotifyAPI.shared.getArtistTopTracks(artistId: artist.id)
                 
-                let detailedTracks: [Track] = try await withThrowingTaskGroup(of: Track.self) { group in
-                    for track in fetchedTopTracks {
-                        group.addTask {
-                            try await SpotifyAPI.shared.getTrack(trackId: track.id)
-                        }
-                    }
-                    
-                    var results: [Track] = []
-                    for try await track in group {
-                        results.append(track)
-                    }
-                    return results
-                }
+                let trackIds = fetchedTopTracks.map { $0.id }
+                
+                let detailedTracks = try await SpotifyAPI.shared.getTrack(trackIds: trackIds)
                 
                 self.topTracks = tracksByPopularity(detailedTracks)
                 self.albums = try await fetchedAlbums
@@ -57,4 +47,5 @@ final class ArtistDetailsViewModel: ObservableObject {
             isLoading = false
         }
     }
+
 }

@@ -27,7 +27,7 @@ class AlbumTrackViewModel: ObservableObject {
             do {
                 let simpleTracks = try await SpotifyAPI.shared.getAlbumTracks(albumId: album.id)
                 
-                let detailedTracks: [Track] = try await fetchTrackDetails(for: simpleTracks)
+                let detailedTracks = try await fetchTrackDetails(for: simpleTracks)
                 
                 self.tracks = tracksByPopularity(detailedTracks)
                 
@@ -45,18 +45,7 @@ class AlbumTrackViewModel: ObservableObject {
     }
     
     private func fetchTrackDetails(for tracks: [Track]) async throws -> [Track] {
-        try await withThrowingTaskGroup(of: Track.self) { group in
-            for track in tracks {
-                group.addTask {
-                    try await SpotifyAPI.shared.getTrack(trackId: track.id)
-                }
-            }
-            
-            var results: [Track] = []
-            for try await track in group {
-                results.append(track)
-            }
-            return results
-        }
+        let trackIds = tracks.map { $0.id }
+        return try await SpotifyAPI.shared.getTrack(trackIds: trackIds)
     }
 }

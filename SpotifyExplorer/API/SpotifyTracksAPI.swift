@@ -9,14 +9,15 @@ import Foundation
 
 extension SpotifyAPI {
     
-    func getTrack(trackId: String) async throws -> Track {
-        guard let url = URL(string: "https://api.spotify.com/v1/tracks/\(trackId)") else {
+    func getTrack(trackIds: [String]) async throws -> [Track] {
+        let idsString = trackIds.joined(separator: ",")
+        guard let url = URL(string: "https://api.spotify.com/v1/tracks?ids=\(idsString)") else {
             throw SpotifyError.invalidURL
         }
         
         let data = try await performRequest(url: url)
-        let decoder = JSONDecoder()
-        return try decoder.decode(Track.self, from: data)
+        struct Response: Codable { let tracks: [Track] }
+        return try JSONDecoder().decode(Response.self, from: data).tracks
     }
     
     func getAlbumTracks(albumId: String) async throws -> [Track] {
