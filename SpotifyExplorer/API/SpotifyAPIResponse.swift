@@ -7,14 +7,6 @@
 
 import Foundation
 
-struct SpotifySearchTrackResponse: Codable {
-    let tracks: TrackPage
-}
-
-struct TrackPage: Codable {
-    let items: [Track]
-}
-
 struct SpotifySearchArtistResponse: Codable {
     let artists: ArtistPage
 }

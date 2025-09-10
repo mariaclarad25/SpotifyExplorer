@@ -24,7 +24,7 @@ struct CardTracks: View {
             musicDuration
         }
         .padding(.horizontal, 14)
-        .padding(.vertical, 10)
+        .padding(.vertical, 5)
         .background(
             LinearGradient(colors: [Color.purple.opacity(0.1), Color.lightPurple.opacity(0.1)],
                            startPoint: .topLeading,
@@ -44,7 +44,7 @@ private extension CardTracks {
                 Image(systemName: "music.note")
                     .font(.title3)
                     .foregroundColor(.white)
-                    .frame(width: 40, height: 40)
+                    .frame(width: 45, height: 45)
                     .background(Color.gray.opacity(0.3))
                     .clipShape(RoundedRectangle(cornerRadius: 2))
             }
@@ -54,7 +54,7 @@ private extension CardTracks {
             .fade(duration: 0.25)
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(width: 40, height: 40)
+            .frame(width: 45, height: 45)
             .clipped()
     }
     

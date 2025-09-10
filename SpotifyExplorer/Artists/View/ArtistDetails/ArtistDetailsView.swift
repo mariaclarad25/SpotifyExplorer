@@ -116,7 +116,7 @@ private extension ArtistDetailsView {
     }
     
     var discographySection: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 2) {
             Text("Discografia")
                 .styleTitleScreenDatails()
             
@@ -141,7 +141,6 @@ private extension ArtistDetailsView {
             }
         }
         .frame(height: 280)
-        .padding(.vertical, 6)
     }
     
     var topTracksSection: some View {

@@ -12,9 +12,9 @@ func configureImageCache() {
     
     cache.memoryStorage.config.totalCostLimit = 1024 * 1024 * 40
     
-    cache.memoryStorage.config.expiration = .seconds(60)
+    cache.memoryStorage.config.expiration = .seconds(240)
     
-    cache.memoryStorage.config.cleanInterval = 15
+    cache.memoryStorage.config.cleanInterval = 80
     
     cache.diskStorage.config.sizeLimit = 1024 * 1024 * 200
     

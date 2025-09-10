@@ -114,7 +114,7 @@ class SearchArtistViewModel: ObservableObject {
         let popularity = artist.popularity ?? 0
         return popularity >= 72
     }
-
+    
     private nonisolated static func isRecommended(_ artist: Artist) -> Bool {
         let popularity = artist.popularity ?? 0
         return popularity > 35 && popularity < 70

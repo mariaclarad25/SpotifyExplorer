@@ -33,7 +33,7 @@ extension SpotifyAPI {
     }
     
     func getArtistAlbums(artistId: String) async throws -> [Album] {
-        guard let url = URL(string: "https://api.spotify.com/v1/artists/\(artistId)/albums?include_groups=album,single&limit=20") else {
+        guard let url = URL(string: "https://api.spotify.com/v1/artists/\(artistId)/albums?include_groups=album,single&limit=30") else {
             throw SpotifyError.invalidURL
         }
         let data = try await performRequest(url: url)

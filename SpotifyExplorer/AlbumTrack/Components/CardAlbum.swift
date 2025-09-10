@@ -21,7 +21,6 @@ struct CardAlbum: View {
         .background(.clear)
         .frame(width: 170, height: 250)
         .cornerRadius(4)
-        .padding(.top, 10)
     }
 }
 
