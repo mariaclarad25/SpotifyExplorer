@@ -47,5 +47,4 @@ final class ArtistDetailsViewModel: ObservableObject {
             isLoading = false
         }
     }
-
 }

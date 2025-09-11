@@ -15,7 +15,8 @@ struct HomeScreenView: View {
     var body: some View {
         NavigationStack{
             ZStack{
-                AnimatedHomeView()
+                Color(.darkPurple).ignoresSafeArea()
+                ShimmerEffect()
                 
                 VStack(spacing: 30) {
                     nameSpotifyImage
@@ -28,6 +29,9 @@ struct HomeScreenView: View {
                     }
                     .onAppear() {
                         pulse = true
+                    }
+                    .onDisappear {
+                        pulse = false
                     }
                     attractiveText
                     
