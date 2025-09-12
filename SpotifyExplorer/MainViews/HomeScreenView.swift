@@ -16,7 +16,6 @@ struct HomeScreenView: View {
         NavigationStack{
             ZStack{
                 Color(.darkPurple).ignoresSafeArea()
-                ShimmerEffect()
                 
                 VStack(spacing: 30) {
                     nameSpotifyImage
