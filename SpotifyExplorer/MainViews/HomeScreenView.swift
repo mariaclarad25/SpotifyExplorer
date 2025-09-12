@@ -15,7 +15,7 @@ struct HomeScreenView: View {
     var body: some View {
         NavigationStack{
             ZStack{
-                Color(.darkPurple).ignoresSafeArea()
+                DecorationHomeView()
                 
                 VStack(spacing: 30) {
                     nameSpotifyImage
