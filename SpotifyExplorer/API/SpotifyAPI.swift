@@ -23,9 +23,11 @@ final class SpotifyAPI {
         let token = try await SpotifyTokenManager.shared.getValidToken()
         let request = makeRequest(url: url, token: token)
         
-        
         let (data, response) = try await URLSession.shared.data(for: request)
-        guard let http = response as? HTTPURLResponse else { throw SpotifyError.invalidResponse }
+        
+        guard let http = response as? HTTPURLResponse else {
+            throw SpotifyError.invalidResponse
+        }
         
         switch http.statusCode {
         case 200...299:
@@ -38,9 +40,15 @@ final class SpotifyAPI {
             throw SpotifyError.serverError(http.statusCode)
         default:
             let body = String(data: data, encoding: .utf8) ?? "<no-body>"
-            print("[SpotifyAPI] Unhandled status=\(http.statusCode) body=\(body)")
+            print("[SpotifyAPI] Status não tratado=\(http.statusCode) body=\(body)")
             throw SpotifyError.invalidResponse
         }
+    }
+    
+    func decode<T: Decodable>(_ type: T.Type, from data: Data) throws -> T {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return try decoder.decode(type, from: data)
     }
 }
 
