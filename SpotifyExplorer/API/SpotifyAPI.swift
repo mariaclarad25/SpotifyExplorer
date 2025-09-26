@@ -29,7 +29,17 @@ final class SpotifyAPI {
             throw SpotifyError.invalidResponse
         }
         
-        switch http.statusCode {
+        return try handleResponseStatus(http.statusCode, data: data)
+    }
+    
+    func decode<T: Decodable>(_ type: T.Type, from data: Data) throws -> T {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return try decoder.decode(type, from: data)
+    }
+    
+    func handleResponseStatus(_ statusCode: Int, data: Data) throws -> Data {
+        switch statusCode {
         case 200...299:
             return data
         case 401:
@@ -37,18 +47,12 @@ final class SpotifyAPI {
         case 429:
             throw SpotifyError.rateLimited
         case 500...599:
-            throw SpotifyError.serverError(http.statusCode)
+            throw SpotifyError.serverError(statusCode)
         default:
             let body = String(data: data, encoding: .utf8) ?? "<no-body>"
-            print("[SpotifyAPI] Status não tratado=\(http.statusCode) body=\(body)")
+            print("[SpotifyAPI] Status não tratado=\(statusCode) body=\(body)")
             throw SpotifyError.invalidResponse
         }
-    }
-    
-    func decode<T: Decodable>(_ type: T.Type, from data: Data) throws -> T {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return try decoder.decode(type, from: data)
     }
 }
 
